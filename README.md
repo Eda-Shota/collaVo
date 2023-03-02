@@ -37,8 +37,8 @@
 
 ## 設計書
 - 画面遷移図
-- https://drive.google.com/file/d/1cdBv8gkuyH756WyyltAm7JXwaKAEDQKI/view?usp=share_link
-- ER図
+　https://drive.google.com/file/d/1cdBv8gkuyH756WyyltAm7JXwaKAEDQKI/view?usp=share_link
+- ワイヤーフレーム
 - https://drive.google.com/drive/folders/15nIAH327yNCYHVYAteC6wGoakDWDZVQz?usp=share_link
 
 ## 開発環境
