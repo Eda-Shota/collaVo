@@ -36,10 +36,10 @@
 - 自身がこれまで行ってきた企画の内容を整理し、簡便に見返せるようにしたい場合。<br>
 
 ## 設計書
-- 画面遷移図
+- 画面遷移図<br>
 　https://drive.google.com/file/d/1cdBv8gkuyH756WyyltAm7JXwaKAEDQKI/view?usp=share_link
-- ワイヤーフレーム
-- https://drive.google.com/drive/folders/15nIAH327yNCYHVYAteC6wGoakDWDZVQz?usp=share_link
+- ワイヤーフレーム<br>
+　https://drive.google.com/drive/folders/15nIAH327yNCYHVYAteC6wGoakDWDZVQz?usp=share_link
 
 ## 開発環境
 - OS：Linux(CentOS)
