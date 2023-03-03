@@ -40,6 +40,8 @@
 　https://drive.google.com/file/d/1cdBv8gkuyH756WyyltAm7JXwaKAEDQKI/view?usp=share_link
 - ワイヤーフレーム<br>
 　https://drive.google.com/drive/folders/15nIAH327yNCYHVYAteC6wGoakDWDZVQz?usp=share_link
+- ＥR図<br>
+　https://drive.google.com/file/d/1L06htRXOBSedPCHubplUI6Ok12Y48CUG/view?usp=share_link
 
 ## 開発環境
 - OS：Linux(CentOS)
