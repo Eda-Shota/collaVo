@@ -42,7 +42,10 @@
 　https://drive.google.com/drive/folders/15nIAH327yNCYHVYAteC6wGoakDWDZVQz?usp=share_link
 - ＥR図<br>
 　https://drive.google.com/file/d/1L06htRXOBSedPCHubplUI6Ok12Y48CUG/view?usp=share_link
-
+- テーブル定義書<br>
+　https://docs.google.com/spreadsheets/d/1dcSaa0UsXDMAWyMRjZgkKuxGBWqtWHWboEyR9sQwIfU/edit?usp=sharing
+- アプリケーション詳細設計書<br>
+　https://docs.google.com/spreadsheets/d/1Zc4OUrqqRDMbMhtN8dSDTJmLHHYDZ_C8XwsfzoOWxkU/edit?usp=sharing
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
