@@ -1,0 +1,2 @@
+module JoinProjectsHelper
+end
