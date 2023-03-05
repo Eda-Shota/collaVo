@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :trackable
 
   has_many :projects
   has_many :projectcomments, dependent: :destroy
@@ -22,4 +22,33 @@ class User < ApplicationRecord
     validates :email
     validates :encrypted_password
   end
+  
+  def get_user_image
+    (user_image.attached?) ? user_image : 'no_image.jpg'
+  end
+
+  def self.guest
+    find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
+    end
+  end
+
+  # フォローしたときの処理
+  def follow(user_id)
+    relationships.create(followed_id: user_id)
+  end
+  # フォローを外すときの処理
+  def unfollow(user_id)
+    relationships.find_by(followed_id: user_id).destroy
+  end
+  # フォローしているか判定　userモデルを参照する条件式に使う
+  def following?(user)
+    followings.include?(user)
+  end
+
+  def self.looks(word)
+    @user = User.where("name LIKE?","%#{word}%")
+  end
+
 end

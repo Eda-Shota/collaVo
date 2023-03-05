@@ -5,7 +5,8 @@ class ProjectsController < ApplicationController
   end
   def index
   end
-
+  def joined_index
+  end
   def show
   end
 

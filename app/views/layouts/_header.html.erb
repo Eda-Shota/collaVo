@@ -1,0 +1,32 @@
+<header class="bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark pb-0">
+    <div class="navbar-brand">
+        <%= link_to root_path, class: 'navbar-brand nav-link' do %>
+          <%= image_tag "logo.png", size: '200x50'%>
+        <% end %>
+    </div>
+
+    <div class="container navbar-collapse">
+      <ul class="navbar-nav ml-auto ol-5">
+        <li class="nav-item">
+          <%= link_to about_path,class: 'nav-link text-light pr-5' do %>
+            <h1>About</h1>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to users_path,class: 'nav-link text-light pr-5' do %>
+            <h1>ユーザー一覧</h1> 
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to projects_path,class: 'nav-link text-light' do %>
+            <h1>募集一覧</h1> 
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="d-flex flex-row-reverse mr-md-5 pb-1">
+    <p>検索窓</p>
+  </div>
+</header>

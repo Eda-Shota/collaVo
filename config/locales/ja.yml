@@ -1,4 +1,8 @@
 ja:
+  time:
+    formats:
+      default: "%Y年%m月%d日 %H:%M"
+      short: "%Y年%m月%d日"
   devise:
     confirmations:
       confirmed: 'アカウントを登録しました。'

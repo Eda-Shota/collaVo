@@ -1,0 +1,61 @@
+<div class="border border-secondary">
+  <ul class="list-unstyled px-4 py-4 my-0">
+    <% if user_signed_in? %>
+      <% if current_user.name != "guestuser" %>
+        <li>
+          <h3><%= current_user.name %>さん</h3>
+        </li>
+        <li>
+          <%= image_tag current_user.get_user_image, size:'200x200' %>
+        </li>
+        <li>
+          <%= link_to new_project_path do %>
+            <h3>新しく募集する</h3>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to user_path(current_user) do %>
+            <h3>マイページ</h3>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to rooms_path do %>
+            <h3>DM一覧</h3>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to user_search_users_project_path(current_user) do %>
+            <h3>自分が募集中の企画</h3>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to projects_joined_index_path do %>
+            <h3>参加申し込み中の企画</h3>
+          <% end %>
+        </li>
+      <% end %>
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <h3>ログアウト</h3>
+          <% end %>
+        </li>
+    <% elsif admin_signed_in? %>
+      <li>
+        <%= link_to destroy_admin_session_path, method: :delete do %>
+          <h3>ログアウト</h3>
+        <% end %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to new_user_session_path do %>
+          <h3>ログイン</h3>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to new_user_registration_path do %>
+          <h3>新規登録</h3>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>

@@ -1,2 +1,51 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<h1>ユーザー一覧</h1>
+<div class="row">
+  <div>
+    <table class='table'>
+      <thead>
+        <tr>
+          <th></th>
+          <th>ユーザー名</th>
+          <th>募集件数</th>
+          <th>フォロー数</th>
+          <th>フォロワー数</th>
+          <th>最終ログイン日時</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr>
+          <td>
+            <%= link_to user_path(user.id) do %>
+              <%= image_tag user.get_user_image, size:'50x50' %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to user_path(user.id) do %>
+              <%= user.name %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to user_search_users_project_path(user.id) do %>
+              <%= user.projects.count %>
+            <% end %>
+          </td>
+          <td>
+            <%= user.followings.count %>
+          </td>
+          <td>
+            <%= user.followers.count %>
+          </td>
+          <td>
+            <%= l user.current_sign_in_at %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <%= paginate @users %>
+  </div>
+</div>
+
