@@ -1,0 +1,30 @@
+<table class="border border-secondary">
+  <thead>
+    <tr>
+      <th class="border border-secondary">企画タイトル</th>
+      <th class="border border-secondary">募集状況</th>
+      <th class="border border-secondary">募集カテゴリ</th>
+      <th class="border border-secondary">いいね数</th>
+      <th class="border border-secondary">募集期限</th>
+      <th class="border border-secondary">募集人数(残数)</th>
+    <% if current_page?(user_path) %>
+      <th class="border border-secondary">投稿ユーザー</th>
+    <% end %>
+      <th class="border border-secondary">投稿日時</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    <% if current_page?(user_path) %>
+      <td></td>
+    <% end %>
+      <td></td>
+    </tr>
+  </tbody>
+</table>

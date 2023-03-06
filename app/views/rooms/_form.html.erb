@@ -1,0 +1,6 @@
+<div>
+  <%= form_with model: message, url: messages_path, local:false do |f| %>
+    <%= f.text_field :message, class:"form-text-field" %>
+    <%= f.hidden_field :dmroom_id, value: dmroom.id %>
+  <% end %>
+</div>

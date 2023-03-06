@@ -1,2 +1,44 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>ユーザー詳細
+  <% if current_user == @user %>
+    <%= link_to "ユーザー情報を編集する", edit_user_path(@user), class: "btn btn-success" %>
+  <% end %>
+</h1>
+<div class="row">
+  <div class="col-md-3">
+    <%= image_tag @user.get_user_image, size:'200x200' %>
+  </div>
+  <div class="col-md-9">
+    <div class="row">
+      <div class="col-md-5">
+        <h1><%= @user.name %>さん</h1>
+      </div>
+      <div class="col-md-5">
+        <% if current_user != @user %>
+          <% if current_user.following?(@user) %>
+            <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete, class: "btn btn-danger" %>
+              <% if @user.following?(current_user) %>
+                <%= render "users/entryroom", user: @user, haveroom: @haveroom, roomId: @roomId %>
+              <% end %>
+          <% else %>
+            <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "btn btn-success" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class"row">
+      最終ログイン日時：<%= l @user.current_sign_in_at %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <p>自己紹介</p>
+</div>
+<div class="row">
+  <p><%= simple_format(@user.introduction) %></p>
+</div>
+<div class="row">
+  <p> <%= @user.name %>さんの募集企画一覧</p>
+</div>
+<div class="row">
+  <%= render 'projects/index', user: @user %>
+</div>

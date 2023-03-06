@@ -1,0 +1,33 @@
+<h1>DM一覧</h1>
+<table>
+  <thead>
+    <tr>
+      <th>
+        DM相手
+      </th>
+      <th>
+        最新メッセージ
+      </th>
+      <th>
+        最終更新日
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @another_entries.each do |entry| %>
+      <tr>
+        <td>
+          <%= link_to room_path(entry.dmroom_id) do %>
+            <%= entry.user.name %>
+          <% end %>
+        </td>
+        <td>
+          <%= Message.find_by(id: entry.dmroom.message_ids.last).message %>
+        </td>
+        <td>
+          <%= l  Message.find_by(id: entry.dmroom.message_ids.last).created_at %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

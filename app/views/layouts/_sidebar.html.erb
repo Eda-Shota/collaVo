@@ -8,6 +8,11 @@
         <li>
           <%= image_tag current_user.get_user_image, size:'200x200' %>
         </li>
+        
+        <li>
+            フォロー数：<%= current_user.followings.count %>
+            フォロワー数：<%= current_user.followers.count %>
+        </li>      
         <li>
           <%= link_to new_project_path do %>
             <h3>新しく募集する</h3>
@@ -22,6 +27,9 @@
           <%= link_to rooms_path do %>
             <h3>DM一覧</h3>
           <% end %>
+        </li>
+        <li>
+            <h3>いいねをした企画一覧</h3>
         </li>
         <li>
           <%= link_to user_search_users_project_path(current_user) do %>

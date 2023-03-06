@@ -1,0 +1,9 @@
+<div id="message">
+  <% if messages.present? %>
+    <% messages.each do |m| %>
+      <div>
+        <div><%= m.message %></div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
