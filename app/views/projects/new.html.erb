@@ -1,2 +1,44 @@
-<h1>Projects#new</h1>
-<p>Find me in app/views/projects/new.html.erb</p>
+<h1>新規企画募集</h1>
+    <%= form_with model:@project do |f| %>
+      <%= render 'layouts/errors', obj: @project %>
+      <div class="form-group">
+        <%= f.label :"企画名(下書きの場合にも必須)" %>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+     <div class="form-group">
+        <%= f.label :"企画サムネ" %>
+        <%= f.file_field :project_image, class: "form-control-file", accept: 'image/*' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :"募集内容詳細" %>
+        <%= f.text_area :introduction, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :"募集日時(開催日初日)" %>
+        <%= f.datetime_field :start_time, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :"募集日時詳細(候補日など)" %>
+        <%= f.text_area :start_time_detail, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :"企画タグ" %>
+        <%= f.text_field :category, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :"募集条件" %>
+        <%= f.text_area :requirement, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :"募集人数" %>
+        <%= f.number_field :capacity, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :"募集期限" %>
+        <%= f.datetime_field :deadline, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "この条件で募集する", :name => 'post', class: 'btn btn-success' %>
+        <%= f.submit "下書きとして保存", :name => 'draft', class: 'btn btn-secondary' %>
+      </div>
+    <% end %>

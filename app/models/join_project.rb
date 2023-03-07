@@ -9,4 +9,6 @@ class JoinProject < ApplicationRecord
     validates :status
   end
   
+  enum join_projects: { applying: 0, permission: 1, disapproval: 2}
+  
 end

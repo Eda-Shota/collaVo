@@ -1,2 +1,8 @@
-<h1>Projects#edit</h1>
-<p>Find me in app/views/projects/edit.html.erb</p>
+<div class="row">
+  <h1 class="col-md-3">企画編集</h1>
+  <p class="col-md-6">※トラブル防止の為、<br>　重要な事項を変更する際には、参加者の方々へご連絡ください。</h1>
+</div>
+
+<div class="row">
+  <%= link_to "募集を取り消す", project_path(@project.id), method: :delete , class: "btn btn-danger"%>
+</div>

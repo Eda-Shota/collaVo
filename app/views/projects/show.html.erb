@@ -1,2 +1,86 @@
-<h1>Projects#show</h1>
-<p>Find me in app/views/projects/show.html.erb</p>
+<h1>企画詳細
+  <% if current_user.id == @project.user_id %>
+    <%= link_to "企画情報を編集する", edit_project_path(@project), class: "btn btn-success" %>
+  <% end %>
+</h1>
+
+<div class="row">
+  <p>企画タイトル</p>
+</div>
+<div class="row">
+  <p><%= @project.title %></p>
+</div>
+<div class="row">
+  <p>募集状況</p>
+</div>
+<div class="row">
+  <p><%= @project.Invitation_status_i18n %></p>
+</div>
+<div class="row">
+  <p>募集ユーザー</p>
+</div>
+<div class="row">
+  <div class="col-md-3">
+    <%= image_tag @project.user.get_user_image, size:'100x100' %>
+  </div>
+  <div class="col-md-9">
+    <div class="row">
+      <div class="col-md-5">
+        <h1><%= @project.user.name %>さん</h1>
+      </div>
+      <div class="col-md-5">
+        <% if current_user != @project.user %>
+          <p>いいね機能</p>
+        <% end %>
+      </div>
+    </div>
+    <div class"row">
+      最終編集日：<%= l @project.updated_at %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <p>企画詳細</p>
+</div>
+<div class="row">
+  <p><%= @project.introduction %></p>
+</div>
+<div class="row">
+  <p>募集日時(開催日初日)</p>
+</div>
+<div class="row">
+  <p><%= @project.start_time %></p>
+</div>
+<div class="row">
+  <p>募集日時詳細(候補日など)</p>
+</div>
+<div class="row">
+  <p><%= @project.start_time_detail %></p>
+</div>
+<div class="row">
+  <p>タグ</p>
+</div>
+<div class="row">
+  <p><%= @project.category %></p>
+</div>
+<div class="row">
+  <p>募集条件</p>
+</div>
+<div class="row">
+  <p><%= @project.requirement %></p>
+</div>
+<div class="row">
+  <p>募集人数(残り人数)</p>
+</div>
+<div class="row">
+  <p><%= @project.capacity %>人(<%= @project.remaining_number %>人)</p>
+</div>
+<div class="row">
+  <p>募集期限</p>
+</div>
+<div class="row">
+  <p><%= l @project.deadline %>まで</p>
+</div>
+<div class="row">
+  <%= render 'projects/join_project', project: @project %>
+</div>

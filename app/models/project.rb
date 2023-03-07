@@ -1,8 +1,11 @@
 class Project < ApplicationRecord
   belongs_to :user
-  has_many :project_comments, dependent: :destroy
-  has_many :favorites, dependent: :destroy
-  has_many :join_projects, dependent: :destroy
+  
+  with_options dependent: :destroy do
+    has_many :projectcomments
+    has_many :favorites
+    has_many :join_projects
+  end
   
   has_one_attached :project_image
   
@@ -12,4 +15,9 @@ class Project < ApplicationRecord
     validates :Invitation_status
   end
   
+  enum Invitation_status: { draft: 0, recruiting: 1, stopped: 2, ended: 3}
+  
+  def remaining_number
+    capacity-join_projects.count
+  end
 end

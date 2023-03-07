@@ -15,8 +15,6 @@ Rails.application.routes.draw do
   get 'search' => 'searches#search'
   resources :rooms, only: [:index, :create, :show]
   resources :messages, only: [:create]  
-
-
   resources :projects do
     resources :project_comments, only: [:create, :destroy]
     resource :join_projects, only: [:create, :destroy]
