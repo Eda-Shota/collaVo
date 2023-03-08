@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update]
   
   def show
-    @user = User.find(params[:id])  
+    @user = User.find(params[:id]) 
+    @projects = Project.where(user_id: @user)
     
     if user_signed_in?
       @currentUserEntry = Entry.where(user_id: current_user.id)

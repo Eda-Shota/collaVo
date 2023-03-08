@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   with_options dependent: :destroy do
     has_many :projects
-    has_many :projectcomments
+    has_many :project_comments
     has_many :favorites
     has_many :relationships, class_name: "Relationship", foreign_key: "follower_id"
     has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id"

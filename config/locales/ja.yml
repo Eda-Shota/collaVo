@@ -1,4 +1,16 @@
 ja:
+  enums:
+    project:
+      status:
+        draft: "下書き"
+        recruiting: "募集中"
+        stopped: "募集停止"
+        ended: "募集完了"
+    join_project:
+      status:
+        applying: "参加申請中"
+        permission: "参加確定"
+        disapproval: "不参加"
   activerecord:
     errors:
       messages:
@@ -7,19 +19,7 @@ ja:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
 
-  enums:
-    project:
-      Invitation_status:
-        draft: "下書き"
-        recruiting: "募集中"
-        stopped: "募集停止"
-        ended: "募集完了"
 
-    join_project:
-      status:
-        applying: "参加申請中"
-        permission: "参加確定"
-        disapproval: "不参加"
 
   errors:
     format: "%{attribute}%{message}"
@@ -129,5 +129,3 @@ ja:
       too_long: "は%{count}文字以下に設定して下さい。"
       invalid: "は有効でありません。"
       confirmation: "が内容とあっていません。"
-      
-  enums:

@@ -1,0 +1,7 @@
+<h1>申し込み済みの募集一覧</h1><p>※取消不可の企画は、DMやコメントにて直接募集ユーザーに御連絡下さい。</p>
+<div class="row">
+  <%= render 'projects/index', user: @user, projects: @projects %>
+</div>
+<div>
+  <%= paginate @projects %>
+</div>

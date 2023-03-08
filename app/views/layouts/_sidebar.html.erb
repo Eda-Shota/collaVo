@@ -37,7 +37,7 @@
           <% end %>
         </li>
         <li>
-          <%= link_to projects_joined_index_path do %>
+          <%= link_to user_joined_project_index_path(current_user.id) do %>
             <h3>参加申し込み中の企画</h3>
           <% end %>
         </li>
@@ -48,6 +48,9 @@
           <% end %>
         </li>
     <% elsif admin_signed_in? %>
+      <li>
+        <h3>コメント一覧</h3>
+      </li>
       <li>
         <%= link_to destroy_admin_session_path, method: :delete do %>
           <h3>ログアウト</h3>

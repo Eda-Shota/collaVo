@@ -1,6 +1,7 @@
 <h1>企画詳細
   <% if current_user.id == @project.user_id %>
     <%= link_to "企画情報を編集する", edit_project_path(@project), class: "btn btn-success" %>
+    <%= link_to "申込者を確認する", project_joined_user_index_path(@project), class: "btn btn-success" %>
   <% end %>
 </h1>
 
@@ -14,7 +15,7 @@
   <p>募集状況</p>
 </div>
 <div class="row">
-  <p><%= @project.Invitation_status_i18n %></p>
+  <p><%= @project.status_i18n %></p>
 </div>
 <div class="row">
   <p>募集ユーザー</p>
@@ -83,4 +84,11 @@
 </div>
 <div class="row">
   <%= render 'projects/join_project', project: @project %>
+</div>
+
+<div id="comments_list">
+  <%= render "project_comments/index", project_comments: @project_comments %>
+</div>
+<div id="comment_form">
+  <%= render "project_comments/form", project: @project, project_comment: @project_comment %>
 </div>

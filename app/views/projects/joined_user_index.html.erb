@@ -1,0 +1,59 @@
+<h1>
+  <%= link_to project_path(@project) do%>
+    <%= @project.title %>
+  <% end %>
+  への参加申し込み者一覧
+</h1>
+  <div class="row">
+    <table class='table col-md-4'>
+      <thead>
+        <tr>
+          <th>募集人数</th>
+          <th>申し込み総数</th>
+          <th>参加確定数</th>
+        </tr>
+　    </thead>
+      <tbody>
+        <tr>
+          <td><%= @project.capacity %>人</td>
+          <td><%= @join_users.count %>人</td>
+          <td><%= @join_users.where(status: "permission").count %>人</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+<div class="row">
+  <table class='table col-md-8'>
+    <thead>
+      <tr>
+        <th>ユーザー名</th>
+        <th>申込日時</th>
+        <th>参加状況</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @join_users.each do |join| %>
+      <tr>
+         <td>
+          <%= link_to user_path(join.user.id) do %>
+            <%= join.user.name %>
+          <% end %>
+        </td>
+        <td>
+          <%= l join.created_at %>  
+        </td>
+        <td>
+          <%= form_with model: join, url: project_join_project_path(join.project_id, join.id), method: :patch do |f| %>
+            <%= f.select :status, JoinProject.statuses_i18n.invert %>
+            <%= f.submit "更新", class: 'btn btn-success' %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div>
+    <%= paginate @join_users %>
+  </div>
+</div>
+

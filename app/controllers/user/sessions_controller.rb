@@ -25,7 +25,7 @@ class User::SessionsController < Devise::SessionsController
   end
   
   protected
-  def customer_state
+  def user_state
     @user = User.find_by(email: params[:user][:email])
     return if !@user
     if @user.valid_password?(params[:user][:password]) && @user.freeze

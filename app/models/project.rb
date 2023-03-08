@@ -2,7 +2,7 @@ class Project < ApplicationRecord
   belongs_to :user
   
   with_options dependent: :destroy do
-    has_many :projectcomments
+    has_many :project_comments
     has_many :favorites
     has_many :join_projects
   end
@@ -12,10 +12,10 @@ class Project < ApplicationRecord
   with_options presence: true do
     validates :user_id
     validates :title
-    validates :Invitation_status
+    validates :status
   end
   
-  enum Invitation_status: { draft: 0, recruiting: 1, stopped: 2, ended: 3}
+  enum status: { draft: 0, recruiting: 1, stopped: 2, ended: 3}
   
   def remaining_number
     capacity-join_projects.count

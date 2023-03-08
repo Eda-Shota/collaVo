@@ -40,5 +40,5 @@
   <p> <%= @user.name %>さんの募集企画一覧</p>
 </div>
 <div class="row">
-  <%= render 'projects/index', user: @user %>
+  <%= render 'projects/index', user: @user, projects: @projects%>
 </div>
