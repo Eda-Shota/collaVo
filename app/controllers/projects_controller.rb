@@ -23,11 +23,19 @@ class ProjectsController < ApplicationController
       end
     end
   end
+  
   def index
     @projects = Project.where.not(status: "draft")
     @projects = @projects.page(params[:page]).per(10)
   end
-  
+
+  def favorite_index
+    @favorites = Favorite.where(user_id: current_user.id).pluck(:project_id)
+    @projects = Project.find(@favorites)
+    projects_array = @projects.map(&:id)
+    @projects_page = Kaminari.paginate_array(projects_array).page(params[:page]).per(10)
+  end
+
   def joined_user_index
     @project = Project.find(params[:project_id])
     @join_users = JoinProject.where(project_id: params[:project_id])
@@ -35,9 +43,10 @@ class ProjectsController < ApplicationController
   end
   
   def joined_project_index
-    @join_projects = JoinProject.where(user_id: current_user.id)
-    @projects = Project.where(id: @join_projects.ids)
-    @projects = @projects.page(params[:page]).per(10)
+    @join_projects = JoinProject.where(user_id: current_user.id).pluck(:project_id)
+    @projects = Project.find(@join_projects)
+    projects_array = @projects.map(&:id)
+    @projects_page = Kaminari.paginate_array(projects_array).page(params[:page]).per(10)
   end
   
   def show

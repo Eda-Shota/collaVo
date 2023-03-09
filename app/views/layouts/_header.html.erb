@@ -27,6 +27,8 @@
     </div>
   </nav>
   <div class="d-flex flex-row-reverse mr-md-5 pb-1">
-    <p>検索窓</p>
+    <%= form_with url: search_path, method: :get do |f| %>
+      <%= f.text_field :word , placeholder:"search"%>
+    <% end %>
   </div>
 </header>

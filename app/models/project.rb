@@ -20,4 +20,13 @@ class Project < ApplicationRecord
   def remaining_number
     capacity-join_projects.count
   end
+  
+  def self.looks(word)
+    Project.where("title LIKE?","%#{word}%")
+  end
+  
+  def favorited_by?(user)
+    favorites.where(user_id: user.id).exists?
+  end
+  
 end

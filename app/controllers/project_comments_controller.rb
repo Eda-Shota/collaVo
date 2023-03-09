@@ -1,4 +1,10 @@
 class ProjectCommentsController < ApplicationController
+  before_action :authenticate_admin![:index]
+
+  def index
+    @project_comments = ProjectComment.all
+  end
+  
   def create
     @project = Project.find(params[:project_id])
     @comment = current_user.project_comments.new(project_comment_params)

@@ -7,7 +7,7 @@
       <th class="border border-secondary">いいね数</th>
       <th class="border border-secondary">募集期限</th>
       <th class="border border-secondary">募集人数(残数)</th>
-    <% if current_page?(users_path) %>
+    <% unless current_page?(user_search_users_project_path(current_user.id)) %>
       <th class="border border-secondary">投稿ユーザー</th>
     <% end %>
       <th class="border border-secondary">最終更新日</th>
@@ -39,9 +39,11 @@
         <td>
           <%= project.capacity %>人(<%= project.remaining_number %>人)
         </td>
-      <% if current_page?(users_path) %>
+      <% unless current_page?(user_search_users_project_path(current_user.id)) %>
         <td>
-          <% project.user.name %>
+          <%= link_to user_path(project.user_id) do %>  
+            <%= project.user.name %>
+          <% end %>
         </td>
       <% end %>
         <td>

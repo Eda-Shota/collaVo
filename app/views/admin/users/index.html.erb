@@ -3,12 +3,11 @@
   <table class='table border border-secondary'>
     <thead>
       <tr>
-        <th></th>
+        <th>ユーザーアイコン</th>
         <th>ユーザー名</th>
         <th>募集件数</th>
-        <th>フォロー数</th>
-        <th>フォロワー数</th>
         <th>最終ログイン日時</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -30,13 +29,14 @@
           <% end %>
         </td>
         <td>
-          <%= user.followings.count %>
-        </td>
-        <td>
-          <%= user.followers.count %>
-        </td>
-        <td>
           <%= l user.current_sign_in_at %>
+        </td>
+        <td>
+          <% if user.freeze == true %>
+            <%= link_to "凍結解除する", user_unfreeze_path(user.id), method: :patch , class: "btn btn-danger"%>
+          <% else %>
+            <%= link_to "凍結する", user_freeze_path(user.id), method: :patch , class: "btn btn-danger"%>
+          <% end %>
         </td>
       </tr>
       <% end %>
@@ -46,4 +46,3 @@
     <%= paginate @users %>
   </div>
 </div>
-

@@ -35,7 +35,6 @@ class User < ApplicationRecord
       user.name = "guestuser"
     end
   end
-
   # フォローしたときの処理
   def follow(user_id)
     relationships.create(followed_id: user_id)

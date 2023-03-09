@@ -29,7 +29,9 @@
           <% end %>
         </li>
         <li>
+          <%= link_to favorite_index_path do %>
             <h3>いいねをした企画一覧</h3>
+          <% end %>
         </li>
         <li>
           <%= link_to user_search_users_project_path(current_user) do %>
@@ -41,6 +43,11 @@
             <h3>参加申し込み中の企画</h3>
           <% end %>
         </li>
+        <li>
+          <%= link_to new_contact_path(user_id: current_user.id) do %>
+            <h3>お問い合わせ</h3>
+          <% end %>
+        </li>
       <% end %>
         <li>
           <%= link_to destroy_user_session_path, method: :delete do %>
@@ -49,7 +56,14 @@
         </li>
     <% elsif admin_signed_in? %>
       <li>
-        <h3>コメント一覧</h3>
+        <%= link_to project_comments_index_path do %>
+          <h3>コメント一覧</h3>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to admin_users_index_path do %>
+          <h3>ユーザー一覧</h3>
+        <% end %>
       </li>
       <li>
         <%= link_to destroy_admin_session_path, method: :delete do %>

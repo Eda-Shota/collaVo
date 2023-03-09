@@ -31,7 +31,9 @@
       </div>
       <div class="col-md-5">
         <% if current_user != @project.user %>
-          <p>いいね機能</p>
+          <div id="favorite_buttons_<%= @project.id %>">
+            <%= render "favorites/favorite_btn", project: @project %>
+          </div>
         <% end %>
       </div>
     </div>
