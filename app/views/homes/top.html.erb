@@ -1,2 +1,15 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="row">
+  <div class="col-md-9">
+    <%= image_tag "top_kari.jpg", size:'768x432' %>
+  </div>
+  <div class="col-md-3 border border-secondary rounded-lg text-center">
+    <h4>運営からのお知らせ</h4>
+    <p>お知らせの内容</p>
+  </div>
+</div>
+<div class="row">
+  <h3>新着の募集</h3>
+</div>
+<div class="row">
+  <%= render 'projects/index', projects: @projects%>
+</div>

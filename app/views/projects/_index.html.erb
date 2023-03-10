@@ -7,57 +7,63 @@
       <th class="border border-secondary">いいね数</th>
       <th class="border border-secondary">募集期限</th>
       <th class="border border-secondary">募集人数(残数)</th>
-    <% unless current_page?(user_search_users_project_path(current_user.id)) %>
-      <th class="border border-secondary">投稿ユーザー</th>
-    <% end %>
       <th class="border border-secondary">最終更新日</th>
-    <% if current_page?(user_joined_project_index_path(current_user)) %>
-      <th class="border border-secondary">取消</th>
+    <% if user_signed_in? %>
+      <% unless current_page?(user_search_users_project_path(current_user.id)) %>
+        <th class="border border-secondary">投稿ユーザー</th>
+      <% end %>
+      <% if current_page?(user_joined_project_index_path(current_user)) %>
+        <th class="border border-secondary">取消</th>
+      <% end %>
     <% end %>
     </tr>
   </thead>
   <tbody>
     <% projects.each do |project| %>
       <tr>
-        <td>
+        <td class="border border-secondary">
           <%= link_to project_path(project.id) do %>  
             <%= project.title %>
           <% end %>
         </td>
-        <td>
+        <td class="border border-secondary">
           <%= project.status_i18n %>
         </td>
-        <td>
+        <td class="border border-secondary">
           <%= project.category %>
         </td>
-        <td>
+        <td class="border border-secondary">
           <%= project.favorites.count %>
         </td>
-        <td>
+        <td class="border border-secondary">
           <%= l project.deadline %>
         </td>
-        <td>
+        <td class="border border-secondary">
           <%= project.capacity %>人(<%= project.remaining_number %>人)
         </td>
-      <% unless current_page?(user_search_users_project_path(current_user.id)) %>
-        <td>
-          <%= link_to user_path(project.user_id) do %>  
-            <%= project.user.name %>
-          <% end %>
-        </td>
-      <% end %>
-        <td>
+        <td class="border border-secondary">
           <%= l project.updated_at %>
         </td>
-      <% if current_page?(user_joined_project_index_path(current_user)) %>
-        <td>
-          <% if JoinProject.find_by(user_id: current_user.id, project_id: project.id).status == "applying" %>
-            <%= link_to "取消", project_join_project_path(project.id, project.user.id), method: :delete, class: "btn btn-danger" %>
-          <% else %>
-            <p class="btn btn-secondary">取消不可</p>
-          <% end %>
-        </td>
+        
+      <% if user_signed_in? %>
+        <% unless current_page?(user_search_users_project_path(current_user.id)) %>
+          <td class="border border-secondary">
+            <%= link_to user_path(project.user_id) do %>  
+              <%= project.user.name %>
+            <% end %>
+          </td>
+        <% end %>
+        <% if current_page?(user_joined_project_index_path(current_user)) %>
+          <td class="border border-secondary">
+            <% if JoinProject.find_by(user_id: current_user.id, project_id: project.id).status == "applying" %>
+              <%= link_to "取消", project_join_project_path(project.id, project.user.id), method: :delete, class: "btn btn-danger" %>
+            <% else %>
+              <p class="btn btn-secondary">取消不可</p>
+            <% end %>
+          </td>
+        <% end %>
       <% end %>
+      
       </tr>
     <% end %>
   </tbody>
