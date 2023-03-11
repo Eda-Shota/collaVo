@@ -25,10 +25,16 @@ class Project < ApplicationRecord
     capacity-join_projects.count
   end
   
-  def self.looks(word)
-    Project.where("title LIKE?","%#{word}%")
+  def self.looks(word,range)
+    if range == "企画タイトル"
+      Project.where("title LIKE?","%#{word}%")
+    else
+      Project.where("category LIKE?","%#{word}%")
+    end
   end
-  
+
+
+
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end

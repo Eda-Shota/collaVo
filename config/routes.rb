@@ -10,10 +10,10 @@ Rails.application.routes.draw do
     post 'user/guest_sign_in', to: 'user/sessions#guest_sign_in'
   end
 
-    get "admin/users/index"=>"admin/users#index"
-    patch "freeze/:id"=>"admin/users#freeze", as: 'user_freeze'
-    patch "unfrieze/:id"=>"admin/users#unfrieze", as: 'user_unfreeze'
-    get "favorite_index"=>"projects#favorite_index"
+  get "admin/users/index"=>"admin/users#index"
+  patch "freeze/:id"=>"admin/users#freeze", as: 'user_freeze'
+  patch "unfrieze/:id"=>"admin/users#unfrieze", as: 'user_unfreeze'
+  get "favorite_index"=>"projects#favorite_index"
     
   root :to =>"homes#top"
   get "about"=>"homes#about"

@@ -1,0 +1,13 @@
+<% if @user == nil %>
+<h2>「<%= @word %>」が含まれる<%= @range %>の企画一覧（検索結果：<%= @projects.count %>件）</h2>
+<% else %>
+<h2><%= @user.name %>さんの企画一覧（検索結果：<%= @projects.count %>件）</h2>
+<% end %>
+
+<h1>募集一覧</h1>
+<div class="row">
+  <%= render 'projects/index', projects: @projects%>
+</div>
+<div>
+  <%= paginate @projects %>
+</div>

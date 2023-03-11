@@ -30,7 +30,9 @@
           <%= project.status_i18n %>
         </td>
         <td class="border border-secondary">
-          <%= project.category %>
+          <%= link_to search_path(word: project.category, range:'企画タグ') do %> 
+            <%= project.category %>
+          <% end %>
         </td>
         <td class="border border-secondary">
           <%= project.favorites.count %>

@@ -7,7 +7,7 @@
   <div class="col-md-3">
     <%= image_tag @user.get_user_image, size:'200x200' %>
   </div>
-  <div class="col-md-9">
+  <div class="col-md-9 text">
     <div class="row">
       <div class="col-md-5">
         <h1><%= @user.name %>さん</h1>
@@ -31,13 +31,13 @@
   </div>
 </div>
 <div class="row">
-  <p>自己紹介</p>
+  <p>・自己紹介</p>
 </div>
-<div class="row">
+<div class="row ml-1">
   <p><%= simple_format(@user.introduction) %></p>
 </div>
 <div class="row">
-  <p> <%= @user.name %>さんの募集企画一覧</p>
+  <p> ・<%= @user.name %>さんの募集企画一覧</p>
 </div>
 <div class="row">
   <%= render 'projects/index', user: @user, projects: @projects%>

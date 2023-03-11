@@ -20,11 +20,11 @@
     <p><%= image_tag @project.get_project_image, size:'640x360' %></p>
   </div>
   <div class="row">
-    <p>募集状況：</p>
-    <h5><%= @project.status_i18n %></h5>
+    <p><i class="fas fa-circle"></i>募集状況：</p>
+      <%= render 'projects/status', project: @project %>
   </div>
   <div class="row">
-    <p>募集ユーザー</p>
+    <p><i class="fas fa-circle"></i>募集ユーザー</p>
   </div>
   <div class="row">
     <div class="col-md-3">
@@ -32,59 +32,59 @@
     </div>
     <div class="col-md-9">
       <div class="row">
-        <div class="col-md-5">
+        <div>
           <h1><%= @project.user.name %>さん</h1>
         </div>
-
       </div>
       <div class"row">
-        最終編集日：<%= l @project.updated_at %>
+        企画最終編集日：<%= l @project.updated_at %>
       </div>
     </div>
   </div>
   <div class="row">
-    <p>企画詳細</p>
+    <p><i class="fas fa-circle"></i>企画詳細</p>
   </div>
-  <div class="row border">
+  <div class="row border border-secondary rounded-lg pl-1">
     <p><%= @project.introduction %></p>
   </div>
   <div class="row">
-    <p>募集日時(開催日初日)</p>
+    <p><i class="fas fa-circle"></i>募集日時(開催日初日)</p>
+  </div>
+  <div class="row pl-1">
+    <p><%= l @project.start_time %></p>
   </div>
   <div class="row">
-    <p><%= @project.start_time %></p>
+    <p><i class="fas fa-circle"></i>募集日時詳細(候補日など)</p>
   </div>
-  <div class="row">
-    <p>募集日時詳細(候補日など)</p>
-  </div>
-  <div class="row">
+  <div class="row border border-secondary rounded-lg pl-1">
     <p><%= @project.start_time_detail %></p>
   </div>
   <div class="row">
-    <p>タグ</p>
+    <p><i class="fas fa-circle"></i>タグ</p>
+  </div>
+  <div class="row pl-1">
+      <%= link_to @project.category, search_path(word: @project.category, range:'企画タグ'), class: "btn btn-dark" %>
+    </p>
   </div>
   <div class="row">
-    <p><%= @project.category %></p>
+    <p><i class="fas fa-circle"></i>募集条件</p>
   </div>
-  <div class="row">
-    <p>募集条件</p>
-  </div>
-  <div class="row">
+  <div class="row border border-secondary rounded-lg pl-1">
     <p><%= @project.requirement %></p>
   </div>
   <div class="row">
-    <p>募集人数(残り人数)</p>
+    <p><i class="fas fa-circle"></i>募集人数(残り人数)</p>
   </div>
-  <div class="row">
+  <div class="row pl-1">
     <p><%= @project.capacity %>人(<%= @project.remaining_number %>人)</p>
   </div>
   <div class="row">
-    <p>募集期限</p>
+    <p><i class="fas fa-circle"></i>募集期限</p>
   </div>
-  <div class="row">
+  <div class="row pl-1">
     <p><%= l @project.deadline %>まで</p>
   </div>
-  <div class="row mb-1">
+  <div class="row my-1">
     <%= render 'projects/join_project', project: @project %>
   </div>
   <h5>コメント</h5>
