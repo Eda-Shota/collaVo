@@ -19,11 +19,11 @@ Rails.application.routes.draw do
   get "about"=>"homes#about"
   get 'search' => 'searches#search'
   get 'project_comments/index' => 'project_comments#index'
+  resources :project_comments, only: [:create, :destroy]
   resources :rooms, only: [:index, :create, :show]
   resources :messages, only: [:create]
   resources :contacts, only: [:new, :create]
   resources :projects do
-    resources :project_comments, only: [:create, :destroy]
     resources :join_projects, only: [:create, :update, :destroy]
     resource :favorites, only: [:create, :destroy]
     get "joined_user_index"=>"projects#joined_user_index"

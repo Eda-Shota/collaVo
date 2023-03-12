@@ -2,22 +2,22 @@ class MessagesController < ApplicationController
     before_action :set_room, only: [:create, :edit, :update, :destroy]
 
   def create
-    if Entry.where(user_id: current_user.id, dmroom_id: @dmroom.id)
-      @message = Message.create(message_params)
+    Entry.where(user_id: current_user.id, dmroom_id: @dmroom.id)
+    @message = Message.create(message_params)
       if @message.save
         @message = Message.new
-        gets_entries_all_messages
+      else
+        flash[:alert] = "メッセージの送信に失敗しました"
       end
+      gets_entries_all_messages
       render "messages/create.js"
-    else
-      flash[:alert] = "メッセージの送信に失敗しました"
-    end
   end
 
   private
 
   def gets_entries_all_messages
-    @messages = @dmroom.messages.includes(:user).order("created_at asc")
+    @messages = @dmroom.messages.includes(:user).order("created_at desc")
+    @messages = @messages.page(params[:page]).per(10)
     @entries = @dmroom.entries
   end
    

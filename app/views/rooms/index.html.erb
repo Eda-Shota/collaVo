@@ -1,7 +1,8 @@
 <h1>DM一覧</h1>
-<table>
+<table class="table">
   <thead>
     <tr>
+      <th></th>
       <th>
         DM相手
       </th>
@@ -17,12 +18,15 @@
     <% @another_entries.each do |entry| %>
       <tr>
         <td>
+          <%= image_tag entry.user.get_user_image, size:'50x50' %>
+        </td>
+        <td>
           <%= link_to room_path(entry.dmroom_id) do %>
             <%= entry.user.name %>
           <% end %>
         </td>
         <td>
-          <%= Message.find_by(id: entry.dmroom.message_ids.last).message %>
+          <%= Message.find_by(id: entry.dmroom.message_ids.last).message.truncate(13) %>
         </td>
         <td>
           <%= l Message.find_by(id: entry.dmroom.message_ids.last).created_at %>

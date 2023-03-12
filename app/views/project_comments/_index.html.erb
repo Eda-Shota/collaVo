@@ -8,10 +8,12 @@
             <%= project_comment.user.name %>
           <% end %>
         </td>
-        <td><%= project_comment.comment %></td>
+        <td>
+          <p><%= project_comment.comment %></p>
+        </td>
         <td>
           <% if project_comment.user == current_user %>
-            <%= link_to "Destroy", project_project_comment_path(project_comment.project_id, project_comment), method: :delete, class: "btn btn-danger pull-right",remote: true %>
+            <%= link_to "削除", project_comment_path(project_comment), method: :delete, class: "btn btn-danger pull-right",remote: true %>
           <% end %>
         </td>
       </tr>

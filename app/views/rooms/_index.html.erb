@@ -1,9 +1,28 @@
 <div id="message">
   <% if messages.present? %>
-    <% messages.each do |m| %>
-      <div>
-        <div><%= m.message %></div>
-      </div>
-    <% end %>
+    <table class="table table-sm">
+
+      <tbody>
+        <% messages.each do |m| %>
+          <tr class="row justify-content-center">
+            <td class="col-1">
+                <%= image_tag m.user.get_user_image, size:'50x50' %><br>
+            </td>
+            <td class="col-10">
+              <%= m.user.name %><br>
+              <div class="mymessage">
+              <p><%= safe_join(m.message.split("\n"),tag(:br)) %></p>
+              <%= l m.created_at %>
+              </div>
+            </td>
+            <td class="col-1"></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    
   <% end %>
+  <div class="row justify-content-center">
+    <%= paginate messages %>
+  </div>
 </div>

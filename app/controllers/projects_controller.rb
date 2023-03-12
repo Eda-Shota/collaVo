@@ -51,10 +51,7 @@ class ProjectsController < ApplicationController
   
   def show
     @project = Project.find(params[:id])
-    @project_comment = ProjectComment.new
     @project_comments = ProjectComment.where(project_id: @project.id).where(user_id: current_user.id).or(ProjectComment.where(user_id: @project.user_id))
-    
-    
   end
 
   def edit

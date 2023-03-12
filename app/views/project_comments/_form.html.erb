@@ -1,4 +1,5 @@
-<%= form_with url: project_project_comments_path(project), model: project_comment, local:false do |f| %>
-  <%= f.text_area :comment, rows:'5', class: "w-100" %>
+<%= form_with url: project_comments_path, model: ProjectComment,  local: false do |f| %>
+  <%= f.text_area :comment, class: "w-100" %>
+  <%= f.hidden_field :project_id, value: project.id %>
   <%= f.submit "送信" %>
 <% end %>
