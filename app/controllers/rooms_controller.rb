@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+  
   def index
     @entries = current_user.entries.all
     @my_room_id = []
@@ -28,6 +29,7 @@ class RoomsController < ApplicationController
   end
   
   private
+
   def join_room_params
       params.require(:entry).permit(:user_id, :dmroom_id).merge(dmroom_id: @dmroom.id)
   end  

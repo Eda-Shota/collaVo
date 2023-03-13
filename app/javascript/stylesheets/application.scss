@@ -5,8 +5,8 @@ body{
 }
 
 li {
-    margin-left: 1.4em;
-    text-indent: -1.4em; 
+  margin-left: 1.4em;
+  text-indent: -1.4em; 
 }
 
 .mymessage {
@@ -30,4 +30,36 @@ li {
   border-right: 18px solid #ffffff;
   -webkit-transform: rotate(35deg);
   transform: rotate(35deg);
+}
+
+.othermessage {
+  float: right;
+  position: relative;
+  width: calc(100% - 56px);
+  padding: 15px;
+  background: #ffffff;
+  border-radius: 20px;
+  line-height: 1;
+  word-break: break-word;
+}
+
+.othermessage:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  right: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #ffffff;
+  -webkit-transform: rotate(145deg);
+  transform: rotate(145deg);
+}
+
+.border{
+  background-color:#fff;
+  box-shadow: 1px 5px 15px 0 rgba(0, 0, 0, .5);
+}
+
+.table th, .table td {
+  vertical-align: baseline;
 }

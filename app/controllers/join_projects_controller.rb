@@ -11,6 +11,9 @@ class JoinProjectsController < ApplicationController
   end
   
   def destroy
+    @join_project = JoinProject.find_by(user_id: current_user.id, project_id: params[:project_id])
+    @join_project.destroy
+    redirect_to user_joined_project_index_path(current_user.id), notice: "企画への参加を取り消しました！"
   end
   
   private

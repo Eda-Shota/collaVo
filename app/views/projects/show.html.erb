@@ -87,11 +87,11 @@
   <div class="row my-1">
     <%= render 'projects/join_project', project: @project %>
   </div>
+</div>
   <h5>コメント</h5>
-  <div id="comments_list">
+  <div class="row ", id="comments_list">
     <%= render "project_comments/index", project_comments: @project_comments %>
   </div>
-  <div id="comment_form">
+  <div class="row", id="comment_form row">
     <%= render "project_comments/form", project: @project %>
   </div>
-</div>

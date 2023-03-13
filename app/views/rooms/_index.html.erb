@@ -1,26 +1,38 @@
-<div id="message">
+<div id="message row">
   <% if messages.present? %>
-    <table class="table table-sm">
-
+    <table class="table table-sm col-md-10">
       <tbody>
         <% messages.each do |m| %>
-          <tr class="row justify-content-center">
-            <td class="col-1">
-                <%= image_tag m.user.get_user_image, size:'50x50' %><br>
-            </td>
-            <td class="col-10">
-              <%= m.user.name %><br>
-              <div class="mymessage">
-              <p><%= safe_join(m.message.split("\n"),tag(:br)) %></p>
-              <%= l m.created_at %>
-              </div>
-            </td>
-            <td class="col-1"></td>
-          </tr>
+          <% if m.user == current_user %>
+            <tr class="row justify-content-center">
+              <td class="col-1">
+                  <%= image_tag m.user.get_user_image, size:'50x50' %>
+              </td>
+              <td class="col-10">
+                <%= m.user.name %><br>
+                <div class="mymessage">
+                <p><%= safe_join(m.message.split("\n"),tag(:br)) %></p>
+                <%= l m.created_at %>
+                </div>
+              </td>
+              <td class="col-1"></td>
+            </tr>
+          <% else %>
+            <tr class="row justify-content-center">
+              <td class="col-1"></td>
+              <td class="col-10 float-right text-right">
+                <%= m.user.name %><br>
+                <div class="othermessage">
+                <p><%= safe_join(m.message.split("\n"),tag(:br)) %></p>
+                <%= l m.created_at %>
+                </div>
+              </td>
+              <td class="col-1"><%= image_tag m.user.get_user_image, size:'50x50' %></td>
+            </tr>
+          <% end %>  
         <% end %>
       </tbody>
     </table>
-    
   <% end %>
   <div class="row justify-content-center">
     <%= paginate messages %>

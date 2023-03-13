@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   get "admin/users/index"=>"admin/users#index"
   patch "freeze/:id"=>"admin/users#freeze", as: 'user_freeze'
-  patch "unfrieze/:id"=>"admin/users#unfrieze", as: 'user_unfreeze'
+  patch "unfreeze/:id"=>"admin/users#unfreeze", as: 'user_unfreeze'
   get "favorite_index"=>"projects#favorite_index"
     
   root :to =>"homes#top"

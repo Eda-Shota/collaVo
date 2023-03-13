@@ -9,8 +9,8 @@ class MessagesController < ApplicationController
       else
         flash[:alert] = "メッセージの送信に失敗しました"
       end
-      gets_entries_all_messages
-      render "messages/create.js"
+    gets_entries_all_messages
+    render "messages/create.js"
   end
 
   private
