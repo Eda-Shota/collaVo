@@ -37,5 +37,4 @@ Rails.application.routes.draw do
     get "joined_project_index"=>"projects#joined_project_index"
   end
 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
