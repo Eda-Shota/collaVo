@@ -38,13 +38,13 @@
           <%= project.favorites.count %>
         </td>
         <td>
-          <%= l project.deadline %>
+          <%= l project.deadline unless project.deadline == nil %>
         </td>
         <td>
-          <%= project.capacity %>人(<%= project.remaining_number %>人)
+          <%= project.capacity %>人(<%= project.remaining_number unless project.capacity == nil %>人)
         </td>
         <td>
-          <%= l project.updated_at %>
+          <%= l project.updated_at unless project.updated_at == nil %>
         </td>
         
       <% if user_signed_in? %>

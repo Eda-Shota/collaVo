@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :joined_index, :create, :edit, :update, :destroy]
-  before_action :set_project, only: [:show, :edit, :show, :joined_user_index]
+  before_action :set_project, only: [:show, :edit, :update, :joined_user_index]
   
   def new
     @project = Project.new
@@ -14,14 +14,14 @@ class ProjectsController < ApplicationController
         @join = JoinProject.create(user_id: current_user.id,project_id: @project.id, status: "permission" )
         redirect_to project_path(@project.id), notice: "企画を投稿しました！"
       else
-        render :new, alert: "保存できませんでした"
+        flash[:alert] = "保存できませんでした"
       end
     else
       if @project.save
         @join = JoinProject.create(user_id: current_user.id,project_id: @project.id, status: "permission" )
         redirect_to project_path(@project.id), notice: "下書き保存しました！"
       else
-        render :new, alert: "保存できませんでした"
+        flash[:alert] = "保存できませんでした"
       end
     end
   end
@@ -59,7 +59,7 @@ class ProjectsController < ApplicationController
     if @project.update(project_params)
       redirect_to project_path(@project), notice: "企画内容を変更しました"
     else
-      render "edit"
+      flash[:alert] = "変更できませんでした"
     end
   end
   def destroy
@@ -71,7 +71,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:title, :status, :introduction, :category, :start_time, :requirement, :capacity, :deadline, :start_time_detail)
+    params.require(:project).permit(:title, :status, :introduction, :category, :start_time, :requirement, :capacity, :deadline, :start_time_detail, :project_image)
   end
 
   def set_project

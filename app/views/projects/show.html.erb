@@ -45,44 +45,45 @@
     <p><i class="fas fa-circle"></i>企画詳細</p>
   </div>
   <div class="row border border-secondary rounded-lg pl-1">
-    <p><%= @project.introduction %></p>
+    <p><%= safe_join(@project.introduction.split("\n"),tag(:br)) %></p>
   </div>
   <div class="row">
     <p><i class="fas fa-circle"></i>募集日時(開催日初日)</p>
   </div>
   <div class="row pl-1">
-    <p><%= l @project.start_time %></p>
+    <p><%= l @project.start_time unless @project.start_time == nil %></p> 
   </div>
   <div class="row">
     <p><i class="fas fa-circle"></i>募集日時詳細(候補日など)</p>
   </div>
   <div class="row border border-secondary rounded-lg pl-1">
-    <p><%= @project.start_time_detail %></p>
+    <p><%= safe_join(@project.start_time_detail.split("\n"),tag(:br)) %></p>
   </div>
   <div class="row">
     <p><i class="fas fa-circle"></i>タグ</p>
   </div>
   <div class="row pl-1">
-      <%= link_to @project.category, search_path(word: @project.category, range:'企画タグ'), class: "btn btn-dark" %>
-    </p>
+    <% unless @project.category == nil %>
+      <%= link_to @project.category, search_path(word: @project.category, range:'企画タグ'), class: "btn btn-dark"%>
+    <% end %>
   </div>
   <div class="row">
     <p><i class="fas fa-circle"></i>募集条件</p>
   </div>
   <div class="row border border-secondary rounded-lg pl-1">
-    <p><%= @project.requirement %></p>
+    <p><%= safe_join(@project.requirementl.split("\n"),tag(:br)) %></p>
   </div>
   <div class="row">
     <p><i class="fas fa-circle"></i>募集人数(残り人数)</p>
   </div>
   <div class="row pl-1">
-    <p><%= @project.capacity %>人(<%= @project.remaining_number %>人)</p>
+    <p><%= @project.capacity %>人(<%= @project.remaining_number unless @project.capacity == nil %>人)</p>
   </div>
   <div class="row">
     <p><i class="fas fa-circle"></i>募集期限</p>
   </div>
   <div class="row pl-1">
-    <p><%= l @project.deadline %>まで</p>
+    <p><%= l @project.deadline unless @project.deadline == nil %>まで</p>
   </div>
   <div class="row my-1">
     <%= render 'projects/join_project', project: @project %>

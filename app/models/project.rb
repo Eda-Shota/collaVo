@@ -18,7 +18,7 @@ class Project < ApplicationRecord
   enum status: { draft: 0, recruiting: 1, stopped: 2, ended: 3}
   
   def get_project_image
-    (project_image.attached?) ? project_image : 'no_image.jpg'
+    (project_image.attached?) ? project_image : 'top_kari.jpg'
   end
   
   def remaining_number

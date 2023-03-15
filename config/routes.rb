@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'notifications/new'
+  get 'notifications/index'
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
@@ -23,6 +25,7 @@ Rails.application.routes.draw do
   resources :rooms, only: [:index, :create, :show]
   resources :messages, only: [:create]
   resources :contacts, only: [:new, :create]
+  resources :notifications
   resources :projects do
     resources :join_projects, only: [:create, :update, :destroy]
     resource :favorites, only: [:create, :destroy]
