@@ -1,0 +1,5 @@
+  <% if JoinProject.find_by(user_id: current_user.id, project_id: project.id) %>
+    <p class="btn btn-secondary">申し込み済み</p>
+  <% else %>
+    <%= link_to "参加申し込みをする", project_join_projects_path(project.id), method: :POST, class: "btn btn-success" %>
+  <% end %>

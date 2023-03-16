@@ -1,0 +1,18 @@
+<% project_comments.each do |project_comment| %>
+  <div class="col-md-1 d-flex align-items-center">
+    <%= link_to user_path(project_comment.user) do %>
+      <%= image_tag project_comment.user.get_user_image, size: "50x50" %><br>
+    <% end %>
+  </div>
+  <div class="col-md-7">
+    <%= project_comment.user.name %><br>
+    <p class="border rounded-lg"><%= safe_join(project_comment.comment.split("\n"),tag(:br)) %></p>
+  </div>
+  <div class="col-md-2 px-0 d-flex align-items-center">
+    <% if (project_comment.user == current_user) || (admin_signed_in?)%>
+      <%= link_to "削除", project_comment_path(project_comment), method: :delete, class: "btn btn-danger pull-right ",remote: true %>
+    <% end %>
+  </div>
+  <div class="col-md-2"></div>
+<% end %>
+

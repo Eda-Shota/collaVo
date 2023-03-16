@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_04_051818) do
+ActiveRecord::Schema.define(version: 2023_03_15_022943) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,6 +52,13 @@ ActiveRecord::Schema.define(version: 2023_03_04_051818) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "content", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "dmrooms", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -59,7 +66,7 @@ ActiveRecord::Schema.define(version: 2023_03_04_051818) do
 
   create_table "entries", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "room_id", null: false
+    t.integer "dmroom_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -81,13 +88,20 @@ ActiveRecord::Schema.define(version: 2023_03_04_051818) do
 
   create_table "messages", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "room_id", null: false
+    t.integer "dmroom_id", null: false
     t.text "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "projectcomments", force: :cascade do |t|
+  create_table "notifications", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "introduction", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "project_comments", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "project_id", null: false
     t.text "comment", null: false
@@ -98,7 +112,7 @@ ActiveRecord::Schema.define(version: 2023_03_04_051818) do
   create_table "projects", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "title", null: false
-    t.integer "Invitation_status", default: 0, null: false
+    t.integer "status", default: 0, null: false
     t.text "introduction"
     t.string "category"
     t.datetime "start_time"
@@ -107,6 +121,7 @@ ActiveRecord::Schema.define(version: 2023_03_04_051818) do
     t.datetime "deadline"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "start_time_detail"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -122,10 +137,16 @@ ActiveRecord::Schema.define(version: 2023_03_04_051818) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
     t.string "name", null: false
     t.text "introduction"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "freeze", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

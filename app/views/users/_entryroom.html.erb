@@ -1,0 +1,14 @@
+<% if user_signed_in? %>
+  <% if user.id != current_user.id %>
+    <% if @haveRoom == true %>
+      <%= link_to "DMを見る/送る", room_path(roomId), class: 'btn btn-info' %>
+    <% else%>
+      <%= form_with model: @room, url: rooms_path do |f| %>
+        <%= fields_for @entry do |e| %>
+          <%= e.hidden_field :user_id, value: user.id %>
+          <%= f.submit "DMを始める", class: 'btn btn-info' %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

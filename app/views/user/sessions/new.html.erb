@@ -1,28 +1,30 @@
-<h2>Log in</h2>
+<h2>ログイン</h2>
 
 <%= form_with model: @user, url: user_session_path do |f| %>
-<%= render "public/shared/error_messages", resource: resource %>
+<%= render "user/shared/error_messages", resource: resource %>
   
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="row field my-2">
+    <%= f.label :メールアドレス, class: "col-md-3" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-md-4" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  <div class="row field my-2">
+    <%= f.label :"パスワード", class: "col-md-3" %>
+    <%= f.password_field :password, autocomplete: "new-password", class: "col-md-4" %>
   </div>
 
   <% if devise_mapping.rememberable? %>
-    <div class="field">
+    <div class="field col-md-4 offset-md-3">
       <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <%= f.label :"パスワードを記憶" %>
     </div>
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "ログイン", class: "text-light btn btn-primary btn-lg mb-3" %>
   </div>
 <% end %>
 
-<%= render "users/shared/links" %>
+<div class="row ml-4 mb-3">
+  <%= render "user/shared/links" %>
+</div>

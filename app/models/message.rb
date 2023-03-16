@@ -5,7 +5,7 @@ class Message < ApplicationRecord
   with_options presence: true do
     validates :message
     validates :user_id
-    validates :room_id
+    validates :dmroom_id
   end
   
 end

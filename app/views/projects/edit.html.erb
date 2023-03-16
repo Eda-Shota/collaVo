@@ -1,2 +1,52 @@
-<h1>Projects#edit</h1>
-<p>Find me in app/views/projects/edit.html.erb</p>
+<div class="col-md-9">
+  <h1>企画編集</h1>
+  <p>※トラブル防止の為、重要な事項を変更する際には、参加者の方々へご連絡ください。</h1>
+  <div>
+    <%= form_with model:@project do |f| %>
+      <%= render 'layouts/errors', obj: @project %>
+      <div class="form-group">  
+        <%= f.select :status, Project.statuses_i18n.invert %>
+      </div>
+      <div class="form-group">
+        <%= f.label :"企画名(下書きの場合にも必須)" %>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :"企画サムネ" %>
+        <%= f.file_field :project_image, class: "form-control-file", accept: 'image/*' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :"募集内容詳細" %>
+        <%= f.text_area :introduction, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :"募集日時(開催日初日)" %>
+        <%= f.datetime_field :start_time, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :"募集日時詳細(候補日など)" %>
+        <%= f.text_area :start_time_detail, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :"企画タグ" %>
+        <%= f.text_field :category, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :"募集条件" %>
+        <%= f.text_area :requirement, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :"募集人数" %>
+        <%= f.number_field :capacity, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :"募集期限" %>
+        <%= f.datetime_field :deadline, class: "form-control" %>
+      </div>
+      <div class="row form-group">
+        <%= f.submit "情報を更新する", :name => 'post', class: 'btn btn-success ml-3' %>
+        <%= link_to "募集を取り消す", project_path(@project.id), method: :delete , data: {confirm: "本当に募集を取り消しますか？"}, class: "btn btn-danger ml-2"%>
+      </div>
+    <% end %>
+  </div>
+</div>

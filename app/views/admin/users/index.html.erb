@@ -1,0 +1,48 @@
+<h1>ユーザー一覧</h1>
+<div class="row">
+  <table class='table border border-secondary'>
+    <thead>
+      <tr>
+        <th>ユーザーアイコン</th>
+        <th>ユーザー名</th>
+        <th>募集件数</th>
+        <th>最終ログイン日時</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td>
+          <%= link_to user_path(user.id) do %>
+            <%= image_tag user.get_user_image, size:'50x50' %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to user_path(user.id) do %>
+            <%= user.name %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to user_search_users_project_path(user.id) do %>
+            <%= user.projects.count %>
+          <% end %>
+        </td>
+        <td>
+          <%= l user.current_sign_in_at %>
+        </td>
+        <td>
+          <% if user.freeze == true %>
+            <%= link_to "凍結解除する", user_unfreeze_path(user.id), method: :patch , data: {confirm: "凍結解除します、よろしいですか？"}, class: "btn btn-danger"%>
+          <% else %>
+            <%= link_to "凍結する", user_freeze_path(user.id), method: :patch , data: {confirm: "凍結します、よろしいですか？"}, class: "btn btn-danger"%>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <div>
+    <%= paginate @users %>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<% if project.status == "draft" %>
+  <h5 class="ml-1 btn btn-info"><%= project.status_i18n %></h5>
+<% elsif project.status == "recruiting" %>
+  <h5 class="ml-1 btn btn-success"><%= project.status_i18n %></h5>
+<% elsif project.status == "stopped" %>
+  <h5 class="ml-1 btn btn-warning"><%= project.status_i18n %></h5>  
+<% else %>
+  <h5 class="ml-1 btn btn-secondary"><%= project.status_i18n %></h5>  
+<% end %>

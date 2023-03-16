@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col-1"></div>
+  <div class="col-10">
+    <%= form_with model: message, url: messages_path, local:false, class: "form-inline mb-2" do |f| %>
+      <%= f.text_area :message, class: "w-75 h-100 form-group pl-0", placeholder:"ここからメッセージを送りましょう" %>
+      <%= f.hidden_field :dmroom_id, value: dmroom.id %>
+      <%= f.submit "送信", class: "btn btn-success ml-1" %>
+    <% end %>
+  </div>
+</div>
