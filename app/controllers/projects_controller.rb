@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :joined_index, :create, :edit, :update, :destroy]
-  before_action :set_project, only: [:show, :edit, :update, :joined_user_index]
+  before_action :set_project, only: [:show, :edit, :update]
   
   def new
     @project = Project.new
@@ -38,6 +38,7 @@ class ProjectsController < ApplicationController
   end
 
   def joined_user_index
+    @project = Project.find(params[:project_id]) 
     @join_users = JoinProject.where(project_id: params[:project_id])
     @join_users = @join_users.page(params[:page]).per(10)
   end
@@ -62,6 +63,7 @@ class ProjectsController < ApplicationController
       flash[:alert] = "変更できませんでした"
     end
   end
+
   def destroy
     @project.destroy
      redirect_to root_path 
