@@ -52,11 +52,11 @@ class UsersController < ApplicationController
   end
 
   def ensure_correct_user
-    redirect_to user_path(current_user) unless @user == current_user
+    redirect_to user_path(@user.id) unless @user == current_user
   end
   
   def ensure_guest_user
-    redirect_to user_path(current_user) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。" if @user.name == "guestuser"
+    redirect_to user_path(@user.id) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。" if @user.name == "guestuser"
   end  
   
 
