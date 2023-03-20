@@ -8,5 +8,5 @@
 
 Admin.create!(
    email: ENV['EMAIL'],
-   encrypted_password: ENV['PASSWORD']
+   password: ENV['PASSWORD']
 )
