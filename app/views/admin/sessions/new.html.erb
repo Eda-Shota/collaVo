@@ -1,16 +1,16 @@
 <h2>管理者ログイン</h2>
 
   <%= form_with model: @admin, url: admin_session_path do |f| %>
-  <%= render "admin/shared/error_messages", resource: resource %>
+  <%= render "admin/shared/error_messages", resource: @admin %>
   
   <div class="row field my-2">
     <%= f.label :メールアドレス, class: "col-md-2" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-md-4" %>
+    <%= f.email_field :email, required: true, autofocus: true, autocomplete: "email", class: "col-md-4" %>
   </div>
 
   <div class="row field my-2">
     <%= f.label :"パスワード", class: "col-md-2" %>
-    <%= f.password_field :password, autocomplete: "new-password", class: "col-md-4" %>
+    <%= f.password_field :password, required: true, autocomplete: "password", class: "col-md-4" %>
   </div>
 
   <% if devise_mapping.rememberable? %>

@@ -1,7 +1,7 @@
 <h2>新規登録</h2>
 
 <%= form_with model: @user, url: user_registration_path do |f| %>
-  <%= render "user/shared/error_messages", resource: resource %>
+  <%= render "user/shared/error_messages", resource: @user %>
   <div class="row field my-2">
     <%= f.label :ユーザー名, class: "col-md-3" %>
     <%= f.text_field :name, required: true, autocomplete: "post_code", class: "col-md-4" %>
@@ -9,7 +9,7 @@
   
   <div class="row field my-2">
     <%= f.label :メールアドレス, class: "col-md-3" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-md-4" %>
+    <%= f.email_field :email, required: true, autofocus: true, autocomplete: "email", class: "col-md-4" %>
   </div>
 
   <div class="row field my-2">
@@ -19,12 +19,12 @@
       <em>(<%= @minimum_password_length %> 文字以上)</em>
     <% end %>
     </div>
-    <%= f.password_field :password, autocomplete: "new-password", class: "col-md-4" %>
+    <%= f.password_field :password, required: true, autocomplete: "new-password", class: "col-md-4" %>
   </div>
 
   <div class="row field my-2">
     <%= f.label :"パスワード(確認用)", class: "col-md-3" %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-md-4" %>
+    <%= f.password_field :password_confirmation, required: true, autocomplete: "new-password", class: "col-md-4" %>
   </div>
 
   <div class="actions">
