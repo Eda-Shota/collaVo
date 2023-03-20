@@ -29,7 +29,7 @@ class ProjectCommentsController < ApplicationController
     if admin_signed_in?
       @project_comments = ProjectComment.all 
     else
-      @project_comments = ProjectComment.where(project_id: @project.id).where(user_id: current_user.id).or(ProjectComment.where(user_id: @project.user_id))
+      @project_comments = ProjectComment.where(user_id: current_user.id).or(ProjectComment.where(user_id: @project.user_id)).where(project_id: @project.id)
     end
   end
 
