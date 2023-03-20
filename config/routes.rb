@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'notifications/new'
   get 'notifications/index'
-  devise_for :admin, skip: [:registrations, :passwords], controllers: {
+  devise_for :admin, skip: [:passwords], controllers: {
     registrations: "admin/registrations",
     sessions: "admin/sessions"
   }
