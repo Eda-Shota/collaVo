@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:show, :edit, :ensure_correct_user, :ensure_guest_user]
+  before_action :set_user, only: [:show, :edit, :update, :ensure_correct_user, :ensure_guest_user]
   before_action :ensure_correct_user, only: [:edit, :update]
 
-  
   def show
     @projects = Project.where(user_id: @user)
     if user_signed_in?
