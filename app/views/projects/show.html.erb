@@ -71,7 +71,9 @@
     <p><i class="fas fa-circle"></i>募集条件</p>
   </div>
   <div class="row border border-secondary rounded-lg pl-1">
-    <p><%= safe_join(@project.requirementl.split("\n"),tag(:br)) %></p>
+    
+    <p><%= safe_join(@project.requirementl.split("\n"),tag(:br)) unless @project.requirementl == nil  %></p>
+    
   </div>
   <div class="row">
     <p><i class="fas fa-circle"></i>募集人数(残り人数)</p>
