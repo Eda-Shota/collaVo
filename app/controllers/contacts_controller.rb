@@ -1,4 +1,5 @@
 class ContactsController < ApplicationController
+  
   def new
     @contact = Contact.new
   end
@@ -22,4 +23,5 @@ class ContactsController < ApplicationController
     def use_before_action?
       false
     end
+    
 end

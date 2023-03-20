@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-    before_action :set_room, only: [:create, :edit, :update, :destroy]
+  before_action :set_room, only: [:create, :edit, :update, :destroy]
 
   def create
     Entry.where(user_id: current_user.id, dmroom_id: @dmroom.id)

@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_correct_user, only: [:edit, :update]
   before_action :set_user, only: [:show, :edit, :ensure_correct_user, :ensure_guest_user]
+  before_action :ensure_correct_user, only: [:edit, :update]
+
   
   def show
     @projects = Project.where(user_id: @user)
@@ -52,7 +53,7 @@ class UsersController < ApplicationController
   end
 
   def ensure_correct_user
-    redirect_to user_path(current_user) unless @user == current_user
+      redirect_to user_path(current_user) unless @user.id == current_user.id
   end
   
   def ensure_guest_user

@@ -1,4 +1,5 @@
 class JoinProjectsController < ApplicationController
+  
   def create
     @join_project = JoinProject.create(user_id: current_user.id, project_id: params[:project_id])
     redirect_to user_joined_project_index_path(current_user.id), notice: "企画への参加を申請しました！"

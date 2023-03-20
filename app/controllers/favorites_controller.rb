@@ -1,4 +1,5 @@
 class FavoritesController < ApplicationController
+  
   def create
     @project = Project.find(params[:project_id])
     favorite = current_user.favorites.create(project_id: @project.id)
@@ -11,4 +12,5 @@ class FavoritesController < ApplicationController
     favorite.destroy
     render "favorites/destroy.js"
   end
+  
 end

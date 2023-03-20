@@ -38,11 +38,13 @@ class NotificationsController < ApplicationController
     @notification.destroy
      redirect_to notifications_path 
   end
-
+  
+  private
+    
   def notification_params
     params.require(:notification).permit(:title, :introduction)
   end
-
+  
   def set_notification
     @notification = Notification.find(params[:id]) 
   end
