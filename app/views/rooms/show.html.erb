@@ -1,4 +1,12 @@
-<%= render "form", dmroom: @dmroom, message: @message %>
-
-<%= render "index", dmroom: @dmroom,messages: @messages %>
-
+<div class="row">
+  <h1><%= @another_entry.user.name %>さんとのDM</h1>
+</div>
+<div class="row">
+  <%= render "form", dmroom: @dmroom, message: @message %>
+</div>
+<div class="row", id="message">
+  <%= render "index", dmroom: @dmroom,messages: @messages %>
+</div>
+<div class="row justify-content-center">
+  <%= paginate @messages %>
+</div>

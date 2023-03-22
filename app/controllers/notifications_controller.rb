@@ -1,6 +1,6 @@
 class NotificationsController < ApplicationController
   before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
-  before_action :set_notification, only: [:show, :edit, :update,]
+  before_action :set_notification, only: [:show, :edit, :update, :destroy]
   
   def new
     @notification = Notification.new
@@ -30,7 +30,7 @@ class NotificationsController < ApplicationController
   end
   
   def index
-    @notifications = Notification.all
+    @notifications = Notification.all.order(created_at: :desc)
     @notifications = @notifications.page(params[:page]).per(10)
   end
   
@@ -46,7 +46,7 @@ class NotificationsController < ApplicationController
   end
   
   def set_notification
-    @notification = Notification.find(params[:id]) 
+    @notification = Notification.find(params[:id])
   end
   
 end

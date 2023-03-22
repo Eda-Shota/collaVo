@@ -16,6 +16,7 @@ class RoomsController < ApplicationController
       @messages = @messages.page(params[:page]).per(10)
       @message = Message.new
       @entries = @dmroom.entries
+      @another_entry = Entry.where.not(user_id: current_user.id).find_by(dmroom_id: @dmroom.id)
     else
       redirect_back(fallback_location: root_path)
     end

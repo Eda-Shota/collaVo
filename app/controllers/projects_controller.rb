@@ -14,14 +14,14 @@ class ProjectsController < ApplicationController
         @join = JoinProject.create(user_id: current_user.id,project_id: @project.id, status: "permission" )
         redirect_to project_path(@project.id), notice: "企画を投稿しました！"
       else
-        flash[:alert] = "保存できませんでした"
+        render "new", alert: "保存できませんでした"
       end
     else
       if @project.save
         @join = JoinProject.create(user_id: current_user.id,project_id: @project.id, status: "permission" )
         redirect_to project_path(@project.id), notice: "下書き保存しました！"
       else
-        flash[:alert] = "保存できませんでした"
+        render "new", alert: "保存できませんでした"
       end
     end
   end
