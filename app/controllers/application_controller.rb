@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
       redirect_to root_path , notice: 'アカウントが凍結されています。確認、復帰以来はお問い合わせフォームへ。'
     end
   end
-  
+#お問い合わせのコントローラーで、上記のアクションが実行されるようになっています。
   def use_before_action?
     true
   end
