@@ -32,7 +32,7 @@ class ProjectsController < ApplicationController
   end
 
   def favorite_index
-    @favorites = Favorite.where(user_id: current_user.id).pluck(:project_id)
+    @favorites = Favorite.order("created_at desc").where(user_id: current_user.id).pluck(:project_id)
     @projects = Project.find(@favorites)
     pagenation_array
   end
@@ -40,11 +40,11 @@ class ProjectsController < ApplicationController
   def joined_user_index
     @project = Project.find(params[:project_id]) 
     @join_users = JoinProject.where(project_id: params[:project_id])
-    @join_users = @join_users.page(params[:page]).per(10)
+    @join_users = @join_users.order("created_at desc").page(params[:page]).per(10)
   end
   
   def joined_project_index
-    @join_projects = JoinProject.where(user_id: current_user.id).pluck(:project_id)
+    @join_projects = JoinProject.order("created_at desc").where(user_id: current_user.id).pluck(:project_id)
     @projects = Project.find(@join_projects)
     pagenation_array
   end
