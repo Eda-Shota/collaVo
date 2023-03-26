@@ -1,7 +1,7 @@
 class ProjectCommentsController < ApplicationController
 
   def index
-    @project_comments = ProjectComment.all
+    @project_comments = ProjectComment.all.order("created_at desc").page(params[:page]).per(10)
   end
   
   def create

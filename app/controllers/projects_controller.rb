@@ -67,7 +67,6 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
      redirect_to root_path 
-   # redirect_to user_search_users_project_path
   end
 
   private
@@ -87,7 +86,8 @@ class ProjectsController < ApplicationController
       @project_comments = ProjectComment.where(user_id: current_user.id).or(ProjectComment.where(user_id: @project.user_id)).where(project_id: @project.id)
     end
   end
-  
+
+#ページメソッドを配列に適用させるための記述
   def pagenation_array
     projects_array = @projects.map(&:id)
     @projects_page = Kaminari.paginate_array(projects_array).page(params[:page]).per(10)

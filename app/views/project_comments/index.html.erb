@@ -2,3 +2,6 @@
 <div class="row", id="comments_list">
   <%= render "project_comments/index", project_comments: @project_comments %>
 </div>
+<div class="d-flex justify-content-center">
+  <%= paginate @project_comments %>
+</div>
