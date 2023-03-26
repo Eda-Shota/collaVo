@@ -29,12 +29,14 @@ class ProjectsController < ApplicationController
   def index
     @projects = Project.where.not(status: "draft")
     @projects = @projects.order("created_at desc").page(params[:page]).per(10)
+    @projects_page = @projects
   end
 
   def favorite_index
     @favorites = Favorite.order("created_at desc").where(user_id: current_user.id).pluck(:project_id)
     @projects = Project.find(@favorites)
     pagenation_array
+    render "index"
   end
 
   def joined_user_index
@@ -47,6 +49,7 @@ class ProjectsController < ApplicationController
     @join_projects = JoinProject.order("created_at desc").where(user_id: current_user.id).pluck(:project_id)
     @projects = Project.find(@join_projects)
     pagenation_array
+    render "index"
   end
   
   def show
