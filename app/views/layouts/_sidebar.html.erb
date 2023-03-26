@@ -1,64 +1,62 @@
 <div class="border rounded-lg">
   <ul class="list-unstyled px-4 py-4 my-0">
     <% if user_signed_in? %>
-      <% if current_user.name != "guestuser" %>
-        <li>
-          <h3><%= current_user.name %>さん</h3>
-        </li>
-        <li>
-          <%= image_tag current_user.get_user_image, width: '100%', height: '100%'  %>
-        </li>
-        <li>
-          フォロー数：
-          <%= link_to user_followings_path(current_user) do %>
-            <%= current_user.followings.count %>
-          <% end %>
-          フォロワー数：
-          <%= link_to user_followers_path(current_user) do %>
-            <%= current_user.followers.count %>
-          <% end %>
-        </li>      
-        <li>
-          <%= link_to new_project_path do %>
-            <h3>新しく募集する</h3>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to user_path(current_user) do %>
-            <h3>マイページ</h3>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to rooms_path do %>
-            <h3>DM一覧</h3>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to favorite_index_path do %>
-            <h3>いいねをした企画一覧</h3>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to user_search_users_project_path(current_user.id) do %>
-            <h3>自分が募集中の企画</h3>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to user_joined_project_index_path(current_user.id) do %>
-            <h3>参加申し込み中の企画</h3>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to new_contact_path(user_id: current_user.id) do %>
-            <h3>お問い合わせ</h3>
-          <% end %>
-        </li>
-      <% end %>
-        <li>
-          <%= link_to destroy_user_session_path, method: :delete do %>
-            <h3>ログアウト</h3>
-          <% end %>
-        </li>
+      <li>
+        <h3><%= current_user.name %>さん</h3>
+      </li>
+      <li>
+        <%= image_tag current_user.get_user_image, width: '100%', height: '100%'  %>
+      </li>
+      <li>
+        フォロー数：
+        <%= link_to user_followings_path(current_user) do %>
+          <%= current_user.followings.count %>
+        <% end %>
+        フォロワー数：
+        <%= link_to user_followers_path(current_user) do %>
+          <%= current_user.followers.count %>
+        <% end %>
+      </li>      
+      <li>
+        <%= link_to new_project_path do %>
+          <h3>新しく募集する</h3>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to user_path(current_user) do %>
+          <h3>マイページ</h3>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to rooms_path do %>
+          <h3>DM一覧</h3>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to favorite_index_path do %>
+          <h3>いいねをした企画一覧</h3>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to user_search_users_project_path(current_user.id) do %>
+          <h3>自分が募集中の企画</h3>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to user_joined_project_index_path(current_user.id) do %>
+          <h3>参加申し込み中の企画</h3>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to new_contact_path(user_id: current_user.id) do %>
+          <h3>お問い合わせ</h3>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <h3>ログアウト</h3>
+        <% end %>
+      </li>
     <% elsif admin_signed_in? %>
       <li>
         <%= link_to new_notification_path do %>
