@@ -1,5 +1,10 @@
 <div class="row">
-  <h1><%= @another_entry.user.name %>さんとのDM</h1>
+  <h1>
+    <%= link_to user_path(@another_entry.user_id) do %>
+      <%= @another_entry.user.name %>
+    <% end %>
+    さんとのDM
+  </h1>
 </div>
 <div class="row">
   <%= render "form", dmroom: @dmroom, message: @message %>

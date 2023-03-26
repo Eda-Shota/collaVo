@@ -28,7 +28,7 @@ class ProjectsController < ApplicationController
   
   def index
     @projects = Project.where.not(status: "draft")
-    @projects = @projects.page(params[:page]).per(10)
+    @projects = @projects.order("created_at desc").page(params[:page]).per(10)
   end
 
   def favorite_index

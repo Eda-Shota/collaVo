@@ -12,12 +12,14 @@ class RelationshipsController < ApplicationController
 
   def followings
     user = User.find(params[:user_id])
-    @users = user.followings
+    @users = user.followings.order("current_sign_in_at desc").page(params[:page]).per(10)
+    render "users/index" 
   end
 
   def followers
     user = User.find(params[:user_id])
-    @users = user.followers
+    @users = user.followers.order("current_sign_in_at desc").page(params[:page]).per(10)
+    render "users/index" 
   end
   
 end

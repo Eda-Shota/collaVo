@@ -9,8 +9,14 @@
           <%= image_tag current_user.get_user_image, width: '100%', height: '100%'  %>
         </li>
         <li>
-            フォロー数：<%= current_user.followings.count %>
-            フォロワー数：<%= current_user.followers.count %>
+          フォロー数：
+          <%= link_to user_followings_path(current_user) do %>
+            <%= current_user.followings.count %>
+          <% end %>
+          フォロワー数：
+          <%= link_to user_followers_path(current_user) do %>
+            <%= current_user.followers.count %>
+          <% end %>
         </li>      
         <li>
           <%= link_to new_project_path do %>

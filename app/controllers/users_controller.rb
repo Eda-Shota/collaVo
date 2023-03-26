@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.page(params[:page]).per(10)
+    @users = User.order("current_sign_in_at desc").page(params[:page]).per(10)
   end
 
   private
@@ -54,11 +54,5 @@ class UsersController < ApplicationController
   def ensure_correct_user
       redirect_to user_path(current_user) unless @user.id == current_user.id
   end
-  
-  def ensure_guest_user
-    redirect_to user_path(current_user) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。" if @user.name == "guestuser"
-  end  
-  
-
 
 end

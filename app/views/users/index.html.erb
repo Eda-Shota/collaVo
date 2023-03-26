@@ -1,4 +1,12 @@
-<h1>ユーザー一覧</h1>
+<h1>
+  <% if current_page?(user_followings_path(current_user)) %>
+    フォロー一覧
+  <% elsif  current_page?(user_followers_path(current_user)) %>
+    フォロワー一覧
+  <% else %>
+    ユーザー一覧
+  <% end %>
+</h1>
 <div class="row">
   <table class='table border border-secondary'>
     <thead>

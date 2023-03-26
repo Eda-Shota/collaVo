@@ -7,8 +7,8 @@
   </h1>
   
   <div class="row">
-    <h1 class="col-md-8"><%= @project.title %></h1>
-      <div class="col-md-4">
+    <h1 class="col-md-10 border"><%= @project.title %></h1>
+      <div class="col-md-2">
       <% if current_user != @project.user %>
         <div id="favorite_buttons_<%= @project.id %>">
           <%= render "favorites/favorite_btn", project: @project %>
@@ -32,9 +32,7 @@
     </div>
     <div class="col-md-9">
       <div class="row">
-        <div>
-          <h1><%= @project.user.name %>さん</h1>
-        </div>
+        <h1 class="border"><%= @project.user.name %>さん</h1>
       </div>
       <div class"row">
         企画最終編集日：<%= l @project.updated_at %>
