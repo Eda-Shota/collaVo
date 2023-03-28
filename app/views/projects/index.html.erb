@@ -9,6 +9,6 @@
 <div class="row">
   <%= render 'projects/index', projects: @projects %>
 </div>
-<% unless current_page?(favorite_index_path) || current_page?(user_joined_project_index_path(current_user.id))%>
+<% if current_page?(projects_path) || current_page?(user_joined_project_index_path(current_user.id)) %>
   <%= render 'layouts/pagenate', pagenation: @pagenation %>
 <% end %>
