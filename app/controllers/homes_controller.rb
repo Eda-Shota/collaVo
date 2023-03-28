@@ -8,5 +8,11 @@ class HomesController < ApplicationController
 
   def about
   end
+
+  private
+#凍結されたアカウントのユーザーがホームを表示させるための記述。
+    def use_before_action?
+      false
+    end
   
 end
