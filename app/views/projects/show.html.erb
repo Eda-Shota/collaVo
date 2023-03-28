@@ -95,7 +95,8 @@
   <div class="row ", id="comments_list">
     <%= render "project_comments/index", project_comments: @project_comments %>
   </div>
+  
   <div class="row", id="comment_form row">
-    <%= render "project_comments/form", project: @project %>
+    <%= render "project_comments/form", project: @project if user_signed_in?%>
   </div>
 <% end %>
