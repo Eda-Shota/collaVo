@@ -6,8 +6,6 @@ class MessagesController < ApplicationController
     @message = Message.create(message_params)
       if @message.save
         @message = Message.new
-      else
-        flash[:alert] = "メッセージの送信に失敗しました"
       end
     gets_entries_all_messages
     render "messages/create.js"

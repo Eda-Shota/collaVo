@@ -4,6 +4,4 @@
     <%= render 'notifications/index', notifications: @notifications %>
   </div>
 </div>
-<div class="d-flex justify-content-center">
-  <%= paginate @notifications %>
-</div>
+<%= render 'layouts/pagenate', pagenation: @pagenation %>

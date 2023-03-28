@@ -39,6 +39,4 @@
     <% end %>
   </tbody>
 </table>
-<div class="d-flex justify-content-center">
-  <%= paginate @another_entries %>
-</div>
+<%= render 'layouts/pagenate', pagenation: @pagenation %>

@@ -30,8 +30,8 @@ class NotificationsController < ApplicationController
   end
   
   def index
-    @notifications = Notification.all.order(created_at: :desc)
-    @notifications = @notifications.page(params[:page]).per(10)
+    @notifications = Notification.all.new_order(params)
+    @pagenation = @notifications
   end
   
   def destroy

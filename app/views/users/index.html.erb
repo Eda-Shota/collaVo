@@ -48,9 +48,7 @@
         </td>
       </tr>
       <% end %>
-      </tbody>
-    </table>
-  <div class="d-flex justify-content-center">
-    <%= paginate @users %>
-  </div>
+    </tbody>
+  </table>
 </div>
+<%= render 'layouts/pagenate', pagenation: @pagenation %>

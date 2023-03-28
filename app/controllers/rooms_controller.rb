@@ -6,13 +6,14 @@ class RoomsController < ApplicationController
     @entries.each do |entry|
       @my_room_id << entry.dmroom.id
     end
-    @another_entries = Entry.where(dmroom_id: @my_room_id).where.not(user_id: current_user.id).order("created_at desc").page(params[:page]).per(10)
+    @another_entries = Entry.where(dmroom_id: @my_room_id).where.not(user_id: current_user.id).new_order(params)
+    @pagenation = @another_entries
   end
 
   def show
     @dmroom = Dmroom.find(params[:id])
     if Entry.where(user_id: current_user.id, dmroom_id: @dmroom.id).present?
-      @messages = @dmroom.messages.includes(:user).order("created_at desc").page(params[:page]).per(10)
+      @messages = @dmroom.messages.includes(:user).new_order(params)
       @message = Message.new
       @entries = @dmroom.entries
       @another_entry = Entry.where.not(user_id: current_user.id).find_by(dmroom_id: @dmroom.id)

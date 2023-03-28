@@ -11,14 +11,14 @@ class ProjectsController < ApplicationController
     @project.user_id = current_user.id
     if params[:post]
       if @project.update(status: "recruiting")
-        @join = JoinProject.create(user_id: current_user.id,project_id: @project.id, status: "permission" )
+        join_project_save
         redirect_to project_path(@project.id), notice: "企画を投稿しました！"
       else
         render "new", alert: "保存できませんでした"
       end
     else
       if @project.save
-        @join = JoinProject.create(user_id: current_user.id,project_id: @project.id, status: "permission" )
+        join_project_save
         redirect_to project_path(@project.id), notice: "下書き保存しました！"
       else
         render "new", alert: "保存できませんでした"
@@ -28,8 +28,8 @@ class ProjectsController < ApplicationController
   
   def index
     @projects = Project.where.not(status: "draft")
-    @projects = @projects.order("created_at desc").page(params[:page]).per(10)
-    @projects_page = @projects
+    @projects = @projects.new_order(params)
+    @pagenation = @projects
   end
 
   def favorite_index
@@ -41,8 +41,8 @@ class ProjectsController < ApplicationController
 
   def joined_user_index
     @project = Project.find(params[:project_id]) 
-    @join_users = JoinProject.where(project_id: params[:project_id])
-    @join_users = @join_users.order("created_at desc").page(params[:page]).per(10)
+    @join_users = JoinProject.where(project_id: params[:project_id]).new_order(params)
+    @pagenation = @join_users
   end
   
   def joined_project_index
@@ -90,10 +90,14 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def join_project_save
+    @join = JoinProject.create(user_id: current_user.id,project_id: @project.id, status: "permission" )
+  end
 #ページメソッドを配列に適用させるための記述
   def pagenation_array
     projects_array = @projects.map(&:id)
-    @projects_page = Kaminari.paginate_array(projects_array).page(params[:page]).per(10)
+    @pagenation = Kaminari.paginate_array(projects_array).page(params[:page]).per(10)
+    
   end
   
 end

@@ -52,8 +52,5 @@
       <% end %>
     </tbody>
   </table>
-  <div class="d-flex justify-content-center">
-    <%= paginate @join_users %>
-  </div>
 </div>
-
+<%= render 'layouts/pagenate', pagenation: @pagenation %>

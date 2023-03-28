@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update]
 
   def show
-    @projects = Project.where(user_id: @user)
+    @projects = Project.where(user_id: @user).new_order(params)
     if user_signed_in?
       @currentUserEntry = Entry.where(user_id: current_user.id)
       @userEntry = Entry.where(user_id: @user.id)
@@ -22,7 +22,6 @@ class UsersController < ApplicationController
         end
       end
     end
-    
   end
 
   def edit
@@ -37,7 +36,8 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.order("current_sign_in_at desc").page(params[:page]).per(10)
+    @users = User.login_order(params)
+    @pagenation = @users
   end
 
   private
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
   end
 
   def ensure_correct_user
-      redirect_to user_path(current_user) unless @user.id == current_user.id
+    redirect_to user_path(current_user) unless @user.id == current_user.id
   end
 
 end

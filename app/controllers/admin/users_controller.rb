@@ -2,7 +2,8 @@ class Admin::UsersController < ApplicationController
   
   def index
     @users = User.all
-    @users = @users.order("current_sign_in_at desc").page(params[:page]).per(10)
+    @users = @users.login_order(params)
+    @pagenation = @users
     render "admin/users/index.html"
   end
   
