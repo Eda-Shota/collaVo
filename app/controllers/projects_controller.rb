@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :joined_index, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   
   def new
@@ -69,7 +69,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
-     redirect_to root_path 
+    redirect_to root_path 
   end
 
   private

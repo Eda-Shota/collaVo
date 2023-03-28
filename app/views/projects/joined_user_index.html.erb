@@ -34,7 +34,7 @@
     <tbody>
       <% @join_users.each do |join| %>
       <tr>
-         <td>
+        <td>
           <%= link_to user_path(join.user.id) do %>
             <%= join.user.name %>
           <% end %>
