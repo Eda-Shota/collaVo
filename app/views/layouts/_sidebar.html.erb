@@ -1,6 +1,27 @@
 <div class="border rounded-lg">
   <ul class="list-unstyled px-4 py-4 my-0">
-    <% if user_signed_in? %>
+    <% if admin_signed_in? %>
+      <li>
+        <%= link_to new_notification_path do %>
+          <h3>おしらせ投稿</h3>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to project_comments_index_path do %>
+          <h3>コメント一覧</h3>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to admin_users_index_path do %>
+          <h3>ユーザー一覧</h3>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to destroy_admin_session_path, method: :delete do %>
+          <h3>ログアウト</h3>
+        <% end %>
+      </li>
+    <% elsif user_signed_in? %>
       <li>
         <h3><%= current_user.name %>さん</h3>
       </li>
@@ -54,27 +75,6 @@
       </li>
       <li>
         <%= link_to destroy_user_session_path, method: :delete do %>
-          <h3>ログアウト</h3>
-        <% end %>
-      </li>
-    <% elsif admin_signed_in? %>
-      <li>
-        <%= link_to new_notification_path do %>
-          <h3>おしらせ投稿</h3>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to project_comments_index_path do %>
-          <h3>コメント一覧</h3>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to admin_users_index_path do %>
-          <h3>ユーザー一覧</h3>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to destroy_admin_session_path, method: :delete do %>
           <h3>ログアウト</h3>
         <% end %>
       </li>

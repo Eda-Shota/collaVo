@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_user, only: [:show, :edit, :update, :ensure_correct_user, :ensure_guest_user]
   before_action :ensure_correct_user, only: [:edit, :update]
 

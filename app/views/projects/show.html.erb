@@ -1,18 +1,21 @@
 <div class="col-md-9">
   <h1>企画内容
-    <% if current_user.id == @project.user_id %>
-      <%= link_to "企画情報を編集する", edit_project_path(@project), class: "btn btn-success" %>
-      <%= link_to "申込者を確認する", project_joined_user_index_path(@project), class: "btn btn-success" %>
+    <% if user_signed_in? %>
+      <% if current_user.id == @project.user_id %>
+        <%= link_to "企画情報を編集する", edit_project_path(@project), class: "btn btn-success" %>
+        <%= link_to "申込者を確認する", project_joined_user_index_path(@project), class: "btn btn-success" %>
+      <% end %>
     <% end %>
   </h1>
-  
   <div class="row">
     <h1 class="col-md-10 border border-secondary rounded-lg"><%= @project.title %></h1>
       <div class="col-md-2">
-      <% if current_user != @project.user %>
-        <div id="favorite_buttons_<%= @project.id %>">
-          <%= render "favorites/favorite_btn", project: @project %>
-        </div>
+      <% if user_signed_in? %>
+        <% if current_user != @project.user %>
+          <div id="favorite_buttons_<%= @project.id %>">
+            <%= render "favorites/favorite_btn", project: @project %>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -84,9 +87,10 @@
     <p><%= l @project.deadline unless @project.deadline == nil %>まで</p>
   </div>
   <div class="row my-1">
-    <%= render 'projects/join_project', project: @project %>
+    <%= render 'projects/join_project', project: @project if user_signed_in?%>
   </div>
 </div>
+<% if user_signed_in? %>
   <h5>コメント</h5>
   <div class="row ", id="comments_list">
     <%= render "project_comments/index", project_comments: @project_comments %>
@@ -94,3 +98,4 @@
   <div class="row", id="comment_form row">
     <%= render "project_comments/form", project: @project %>
   </div>
+<% end %>
