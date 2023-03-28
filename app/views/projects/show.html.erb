@@ -90,13 +90,12 @@
     <%= render 'projects/join_project', project: @project if user_signed_in?%>
   </div>
 </div>
-<% if user_signed_in? || admin_signed_in? %>
+<% if user_signed_in?%>
   <h5>コメント</h5>
   <div class="row ", id="comments_list">
     <%= render "project_comments/index", project_comments: @project_comments %>
   </div>
-  
   <div class="row", id="comment_form row">
-    <%= render "project_comments/form", project: @project if user_signed_in?%>
+    <%= render "project_comments/form", project: @project %>
   </div>
 <% end %>
