@@ -26,4 +26,9 @@ class User::SessionsController < Devise::SessionsController
     redirect_to new_customer_registration_path , notice: 'アカウントが凍結されています。'
     end
   end
+  
+  #凍結されたアカウントのユーザーがログイン、ログアウトするための。
+  def use_before_action?
+    false
+  end  
 end
