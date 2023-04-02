@@ -8,7 +8,7 @@ class ProjectCommentsController < ApplicationController
   def create
     @comment = current_user.project_comments.create(project_comment_params)
     @comment.score = Language.get_data(project_comment_params[:comment])  #google natural language APIを使用
-    @comment.savegit
+    @comment.save
     @project = Project.find(@comment.project_id)
     get_comments_list
     render "project_comments/create.js"
