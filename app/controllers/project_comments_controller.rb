@@ -30,7 +30,7 @@ class ProjectCommentsController < ApplicationController
 
   def get_comments_list
     if admin_signed_in?
-      @project_comments = ProjectComment.all 
+      @project_comments = ProjectComment.all.new_order(params)
     else
       @project_comments = ProjectComment.where(user_id: current_user.id).or(ProjectComment.where(user_id: @project.user_id)).where(project_id: @project.id)
     end
