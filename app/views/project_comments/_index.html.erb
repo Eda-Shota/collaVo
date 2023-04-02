@@ -9,7 +9,8 @@
     <% if admin_signed_in? %> 
       <%= link_to project_path(project_comment.project_id) do%>
         <%= project_comment.project.title%>
-      <% end %><br>
+      <% end %>
+      コメントの感情分析スコア[<%= project_comment.score %>]<br>
     <% end %>
     <p class="border rounded-lg"><%= safe_join(project_comment.comment.split("\n"),tag(:br)) %></p>
   </div>
