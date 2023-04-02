@@ -10,7 +10,15 @@
       <%= link_to project_path(project_comment.project_id) do%>
         <%= project_comment.project.title%>
       <% end %>
-      コメントの感情分析スコア[<%= project_comment.score %>]<br>
+      コメントの感情分析スコア[
+      <% if project_comment.score.to_f < -0.5 %>
+        <span class="text-danger">
+      <% elsif project_comment.score.to_f < 0 %>
+        <span class="text-warning">
+      <% else %>
+        <span class="text-success">
+      <% end %>
+      <%= project_comment.score %></span>]<br>
     <% end %>
     <p class="border rounded-lg"><%= safe_join(project_comment.comment.split("\n"),tag(:br)) %></p>
   </div>
