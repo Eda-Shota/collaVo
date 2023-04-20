@@ -1,4 +1,5 @@
 class Admin::UsersController < ApplicationController
+  before_action :authenticate_admin!
   
   def index
     @users = User.all
@@ -16,5 +17,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id]).update(freeze: false)
     redirect_to admin_users_index_path
   end
+ 
+
   
 end

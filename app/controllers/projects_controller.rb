@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :joined_index, :create, :edit, :update, :destroy]
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :project_user?, only: [:edit, :update, :destroy]
   
   def new
     @project = Project.new
@@ -80,6 +81,10 @@ class ProjectsController < ApplicationController
 
   def set_project
     @project = Project.find(params[:id]) 
+  end
+
+  def project_user?
+    redirect_to root_path if @project.user_id != current_user.id
   end
 
   def get_comments_list

@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :user_check, if: :use_before_action? 
-  
+
   private 
   def user_check
     if current_user.freeze == true
@@ -11,5 +11,5 @@ class ApplicationController < ActionController::Base
   def use_before_action?
     true
   end
-  
+
 end

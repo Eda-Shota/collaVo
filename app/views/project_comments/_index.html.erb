@@ -6,6 +6,7 @@
   </div>
   <div class="col-md-7">
     <%= project_comment.user.name %>　
+    <%= l project_comment.created_at %>
     <% if admin_signed_in? %> 
       <%= link_to project_path(project_comment.project_id) do%>
         <%= project_comment.project.title%>
@@ -24,7 +25,7 @@
   </div>
   <div class="col-md-2 px-0 d-flex align-items-center">
     <% if (project_comment.user == current_user) || (admin_signed_in?)%>
-      <%= link_to "削除", project_comment_path(project_comment), method: :delete, class: "btn btn-danger pull-right ",remote: true %>
+      <%= link_to "削除", project_comment_path(project_comment), method: :delete, data: {confirm: "コメントを削除します、よろしいですか？"}, class: "btn btn-danger pull-right ", remote: true %>
     <% end %>
   </div>
   <div class="col-md-2"></div>
