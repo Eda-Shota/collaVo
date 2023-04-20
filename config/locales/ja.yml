@@ -18,8 +18,15 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
-
-
+    attributes:
+      project:
+        title: 企画名
+        status: 募集状況
+        introduction: 企画紹介
+      user:
+        name: 名前
+        emai: メールアドレス
+        introduction: 自己紹介
 
   errors:
     format: "%{attribute}%{message}"
@@ -52,6 +59,7 @@ ja:
     template:
       body: 次の項目を確認してください
       header: "%{model}に%{count}個のエラーが発生しました"
+
   helpers:
     select:
       prompt: 選択してください
