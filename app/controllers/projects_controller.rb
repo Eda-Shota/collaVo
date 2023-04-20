@@ -15,14 +15,14 @@ class ProjectsController < ApplicationController
         join_project_save
         redirect_to project_path(@project.id), notice: "企画を投稿しました！"
       else
-        render "new", alert: "保存できませんでした"
+        render "new"
       end
     else
       if @project.save
         join_project_save
         redirect_to project_path(@project.id), notice: "下書き保存しました！"
       else
-        render "new", alert: "保存できませんでした"
+        render "new"
       end
     end
   end
