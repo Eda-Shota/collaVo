@@ -2,7 +2,7 @@
   <div class="col-md-9">
     <div class="swiper">
       <div class="swiper-wrapper">
-        <% @sample_prohects.each do |project| %>
+        <% @sample_projects.each do |project| %>
           <div data-turbolinks="false", class="swiper-slide ">
             <%= link_to project_path(project.id) do %>
               <%= image_tag project.get_project_image, width: '100%', height: '100%' %>

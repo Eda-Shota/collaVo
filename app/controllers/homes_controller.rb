@@ -1,8 +1,8 @@
 class HomesController < ApplicationController
   
   def top
-    @projects = Project.all.top_order
-    @sample_prohects = Project.where(status: "recruiting").sample(5)
+    @projects = Project.where(status: "recruiting").top_order
+    @sample_projects = Project.where(status: "recruiting").sample(5)
     @notifications = Notification.top_order
   end
 
